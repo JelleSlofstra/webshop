@@ -17,7 +17,7 @@ class CreateProductPropertiesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('product_id')->references('id')->on('products');
-            $table->foreignId('product_size')->references('id')->on('products');
+            $table->foreignId('product_size')->references('id')->on('product_sizes');
             $table->foreignId('product_colour')->references('id')->on('product_colours');
             $table->foreignId('product_gender')->references('id')->on('product_genders');
             $table->timestamp('deleted_at')->nullable();
