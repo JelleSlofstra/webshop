@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ProductColour;
 use Illuminate\Database\Seeder;
 
 class ProductColourSeeder extends Seeder
@@ -13,6 +14,8 @@ class ProductColourSeeder extends Seeder
      */
     public function run()
     {
-        //
+        ProductColour::create(['colour' => 'Black']);
+        ProductColour::create(['colour' => 'Yellow']);
+        ProductColour::create(['colour' => 'Red']);
     }
 }
