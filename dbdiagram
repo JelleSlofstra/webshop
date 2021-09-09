@@ -1,0 +1,59 @@
+Table users
+{
+  id int [pk]
+  first_name varchar
+  last_name varchar
+  user_name varchar
+  role [fk]
+  email varchar
+  password varchar
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table user_contact
+{
+  id int [pk]
+  user_id [fk]
+  street varchar
+  postal_code varchar
+  city varchar
+  street_number varchar
+  phone varchar
+  bank_account varchar
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table categories
+{
+  id int [pk]
+  name varchar
+ created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table products
+{
+  id int [pk]
+  category_id [fk]
+  price bigint
+  vat bigint
+  manufacturer [fk]
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table product_images
+{
+  id int [pk]
+  image varchar 
+  product_id [fk]
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
