@@ -13,7 +13,7 @@ class CreateCartContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cart__contents', function (Blueprint $table) {
+        Schema::create('cart_contents', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignId('product_propertie_id')->references('id')->on('product_properties');
@@ -30,6 +30,6 @@ class CreateCartContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cart__contents');
+        Schema::dropIfExists('cart_contents');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Cart_Content;
+use App\Models\Cart_content;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CartContentFactory extends Factory
@@ -12,7 +12,7 @@ class CartContentFactory extends Factory
      *
      * @var string
      */
-    protected $model = Cart_Content::class;
+    protected $model = Cart_content::class;
 
     /**
      * Define the model's default state.
