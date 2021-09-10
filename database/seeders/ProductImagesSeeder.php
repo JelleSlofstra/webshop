@@ -18,12 +18,12 @@ class ProductImagesSeeder extends Seeder
         foreach (Product::all() as $product)
         {
             ProductImage::create([
-                'image'         => 'krat.jpg',
+                'image'         => 'fiets.jpg',
                 'product_id'    => $product->id
             ]);
-
+            
             ProductImage::create([
-                'image'         => 'fiets.jpg',
+                'image'         => 'krat.jpg',
                 'product_id'    => $product->id
             ]);
         }        
