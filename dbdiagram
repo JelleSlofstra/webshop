@@ -1,0 +1,192 @@
+Table users
+{
+  id int [pk]
+  first_name varchar
+  last_name varchar
+  user_name varchar
+  role [fk]
+  email varchar
+  password varchar
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table user_contact
+{
+  id int [pk]
+  user_id [fk]
+  street varchar
+  postal_code varchar
+  city varchar
+  street_number varchar
+  phone varchar
+  bank_account varchar
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table categories
+{
+  id int [pk]
+  name varchar
+ created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table products
+{
+  id int [pk]
+  category_id [fk]
+  price bigint
+  vat bigint
+  manufacturer [fk]
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table product_images
+{
+  id int [pk]
+  image varchar 
+  product_id [fk]
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table product_colors
+{
+  id int [pk]
+  color enum
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table product_sizes
+{
+  id int [pk]
+  size enum 
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table product_gender
+{
+  id int [pk]
+  gender enum
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table product_properties
+{
+  id int [pk]
+  product_id [fk]
+  size  [fk]
+  color  [fk]
+  gender  [fk]
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table orders
+{
+  id int [pk]
+  user_id [fk]
+  cart_id [fk]
+  shipping_address [fk]
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table cart 
+{
+  id int [pk]
+  user_id [fk]
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table stock
+{
+  id [pk]
+  product_propertie_id [fk]
+  in_stock [fk]
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+Table stock_status 
+{
+  id [pk]
+  status enum
+  created_at datetime
+  updated_at datetime
+  deleted datetime
+}
+
+
+Table roles
+{
+  id int [pk]
+  role int 
+}
+
+Table manufacturer
+{
+  id int [pk]
+  name varchar
+}
+
+Table cart_contents
+{
+  id int [pk]
+  product_properties_id [fk]
+  amount int 
+  cart_id [fk]
+  
+}
+
+Ref: "products"."category_id" < "categories"."id"
+
+Ref: "product_gender"."id" < "product_properties"."gender"
+
+Ref: "product_sizes"."id" < "product_properties"."size"
+
+Ref: "product_colors"."id" < "product_properties"."color"
+
+Ref: "products"."id" < "product_properties"."product_id"
+
+Ref: "orders"."user_id" < "users"."id"
+
+Ref: "cart"."user_id" < "users"."id"
+
+Ref: "cart_contents"."product_properties_id" < "product_properties"."id"
+
+Ref: "stock"."product_propertie_id" < "product_properties"."id"
+
+Ref: "cart_contents"."cart_id" < "cart"."id"
+
+Ref: "stock_status"."id" < "stock"."in_stock"
+
+
+Ref: "product_images"."product_id" < "products"."id"
+
+
+
+Ref: "roles"."id" < "users"."role"
+
+Ref: "user_contact"."user_id" < "users"."id"
+
+Ref: "manufacturer"."id" < "products"."manufacturer"
