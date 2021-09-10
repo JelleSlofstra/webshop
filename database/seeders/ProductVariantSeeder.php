@@ -9,7 +9,7 @@ use App\Models\ProductVariant;
 use App\Models\ProductSize;
 use Illuminate\Database\Seeder;
 
-class ProductPropertySeeder extends Seeder
+class ProductVariantSeeder extends Seeder
 {
     /**
      * Run the database seeds.

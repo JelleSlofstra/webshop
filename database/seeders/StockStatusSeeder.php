@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\StockStatus;
 use Illuminate\Database\Seeder;
 
 class StockStatusSeeder extends Seeder
@@ -13,6 +14,7 @@ class StockStatusSeeder extends Seeder
      */
     public function run()
     {
-        //
+        StockStatus::create(['status' => 'In_Stock']);
+        StockStatus::create(['status' => 'Not_In_Stock']);
     }
 }

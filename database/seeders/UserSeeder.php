@@ -19,8 +19,18 @@ class UserSeeder extends Seeder
             'first_name' => 'Sam',
             'last_name' => 'Wijnsma',
             'username' => 'SamWijnsma',
-            'role_id' => 2,
-            'email' => $this->faker->unique()->safeEmail(),
+            'role_id' => 1,
+            'email' => 'samwijnsma@outlook.com',
+            'email_verified_at' => now(),
+            'password' => bcrypt('Gorilla1!'), // password
+            'remember_token' => Str::random(10),
+        ]);
+        User::create([
+            'first_name' => 'Jelle',
+            'last_name' => 'Slofstra',
+            'username' => 'JelleSlofstra',
+            'role_id' => 1,
+            'email' => 'jelleslofstra@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('Gorilla1!'), // password
             'remember_token' => Str::random(10),
