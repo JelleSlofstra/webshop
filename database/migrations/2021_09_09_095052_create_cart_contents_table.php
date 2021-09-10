@@ -16,7 +16,7 @@ class CreateCartContentsTable extends Migration
         Schema::create('cart_contents', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('product_property_id')->references('id')->on('product_properties');
+            $table->foreignId('product_variant_id')->references('id')->on('product_variants');
             $table->foreignId('product_id')->references('id')->on('products');
             $table->integer('amount');
             $table->timestamp('deleted_at')->nullable();

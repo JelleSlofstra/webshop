@@ -16,7 +16,7 @@ class CreateStocksTable extends Migration
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('product_property_id')->references('id')->on('product_properties');
+            $table->foreignId('product_variant_id')->references('id')->on('product_variants');
             $table->foreignId('In_Stock')->references('id')->on('stock_statuses');
         });
     }
