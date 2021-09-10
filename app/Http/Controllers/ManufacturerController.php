@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\manufacturer;
+use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 
 class ManufacturerController extends Controller
@@ -41,10 +41,10 @@ class ManufacturerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\manufacturer  $manufacturer
+     * @param  \App\Models\Manufacturer  $manufacturer
      * @return \Illuminate\Http\Response
      */
-    public function show(manufacturer $manufacturer)
+    public function show(Manufacturer $manufacturer)
     {
         //
     }
@@ -52,10 +52,10 @@ class ManufacturerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\manufacturer  $manufacturer
+     * @param  \App\Models\Manufacturer  $manufacturer
      * @return \Illuminate\Http\Response
      */
-    public function edit(manufacturer $manufacturer)
+    public function edit(Manufacturer $manufacturer)
     {
         //
     }
@@ -64,10 +64,10 @@ class ManufacturerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\manufacturer  $manufacturer
+     * @param  \App\Models\Manufacturer  $manufacturer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, manufacturer $manufacturer)
+    public function update(Request $request, Manufacturer $manufacturer)
     {
         //
     }
@@ -75,10 +75,10 @@ class ManufacturerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\manufacturer  $manufacturer
+     * @param  \App\Models\Manufacturer  $manufacturer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(manufacturer $manufacturer)
+    public function destroy(Manufacturer $manufacturer)
     {
         //
     }

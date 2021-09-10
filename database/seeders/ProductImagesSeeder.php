@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Product;
-use App\Models\product_images;
+use App\Models\ProductImage;
 use Illuminate\Database\Seeder;
 
 class ProductImagesSeeder extends Seeder
@@ -17,12 +17,12 @@ class ProductImagesSeeder extends Seeder
     {
         foreach (Product::all() as $product)
         {
-            product_images::create([
+            ProductImage::create([
                 'image'         => 'krat.jpg',
                 'product_id'    => $product->id
             ]);
 
-            product_images::create([
+            ProductImage::create([
                 'image'         => 'fiets.jpg',
                 'product_id'    => $product->id
             ]);

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\stock_status;
+use App\Models\StockStatus;
 use Illuminate\Http\Request;
 
 class StockStatusController extends Controller
@@ -41,10 +41,10 @@ class StockStatusController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\stock_status  $stock_status
+     * @param  \App\Models\StockStatus  $stockStatus
      * @return \Illuminate\Http\Response
      */
-    public function show(stock_status $stock_status)
+    public function show(StockStatus $stockStatus)
     {
         //
     }
@@ -52,10 +52,10 @@ class StockStatusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\stock_status  $stock_status
+     * @param  \App\Models\StockStatus  $stockStatus
      * @return \Illuminate\Http\Response
      */
-    public function edit(stock_status $stock_status)
+    public function edit(StockStatus $stockStatus)
     {
         //
     }
@@ -64,10 +64,10 @@ class StockStatusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\stock_status  $stock_status
+     * @param  \App\Models\StockStatus  $stockStatus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, stock_status $stock_status)
+    public function update(Request $request, StockStatus $stockStatus)
     {
         //
     }
@@ -75,10 +75,10 @@ class StockStatusController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\stock_status  $stock_status
+     * @param  \App\Models\StockStatus  $stockStatus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(stock_status $stock_status)
+    public function destroy(StockStatus $stockStatus)
     {
         //
     }

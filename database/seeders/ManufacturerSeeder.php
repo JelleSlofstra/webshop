@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\manufacturer;
+use App\Models\Manufacturer;
 use Illuminate\Database\Seeder;
 
 class ManufacturerSeeder extends Seeder
@@ -14,13 +14,13 @@ class ManufacturerSeeder extends Seeder
      */
     public function run()
     {
-        manufacturer::create(['name' => 'Batavier']);
-        manufacturer::create(['name' => 'Gnoezelle']);
-        manufacturer::create(['name' => 'Snella']);
-        manufacturer::create(['name' => 'BNC']);
-        manufacturer::create(['name' => 'Sporto']);
-        manufacturer::create(['name' => 'Mitcheltan-Scatt']);
-        manufacturer::create(['name' => 'Amslot']);
-        manufacturer::create(['name' => 'Dwarf']);
+        Manufacturer::create(['name' => 'Batavier']);
+        Manufacturer::create(['name' => 'Gnoezelle']);
+        Manufacturer::create(['name' => 'Snella']);
+        Manufacturer::create(['name' => 'BNC']);
+        Manufacturer::create(['name' => 'Sporto']);
+        Manufacturer::create(['name' => 'Mitcheltan-Scatt']);
+        Manufacturer::create(['name' => 'Amslot']);
+        Manufacturer::create(['name' => 'Dwarf']);
     }
 }
