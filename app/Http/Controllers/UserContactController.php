@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user_contact;
+use App\Models\UserContact;
 use Illuminate\Http\Request;
 
 class UserContactController extends Controller
@@ -41,10 +41,10 @@ class UserContactController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\user_contact  $user_contact
+     * @param  \App\Models\UserContact  $userContact
      * @return \Illuminate\Http\Response
      */
-    public function show(user_contact $user_contact)
+    public function show(UserContact $userContact)
     {
         //
     }
@@ -52,10 +52,10 @@ class UserContactController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\user_contact  $user_contact
+     * @param  \App\Models\UserContact  $userContact
      * @return \Illuminate\Http\Response
      */
-    public function edit(user_contact $user_contact)
+    public function edit(UserContact $userContact)
     {
         //
     }
@@ -64,10 +64,10 @@ class UserContactController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\user_contact  $user_contact
+     * @param  \App\Models\UserContact  $userContact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user_contact $user_contact)
+    public function update(Request $request, UserContact $userContact)
     {
         //
     }
@@ -75,10 +75,10 @@ class UserContactController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\user_contact  $user_contact
+     * @param  \App\Models\UserContact  $userContact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user_contact $user_contact)
+    public function destroy(UserContact $userContact)
     {
         //
     }

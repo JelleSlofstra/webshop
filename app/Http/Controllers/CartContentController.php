@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart_content;
+use App\Models\CartContent;
 use Illuminate\Http\Request;
 
 class CartContentController extends Controller
@@ -41,10 +41,10 @@ class CartContentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cart_content  $cart_content
+     * @param  \App\Models\CartContent  $cartContent
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart_content $cart_content)
+    public function show(CartContent $cartContent)
     {
         //
     }
@@ -52,10 +52,10 @@ class CartContentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cart_content  $cart_content
+     * @param  \App\Models\CartContent  $cartContent
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cart_content $cart_content)
+    public function edit(CartContent $cartContent)
     {
         //
     }
@@ -63,11 +63,11 @@ class CartContentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cart_content  $cart_content
+     * @param  \Illuminate\Http\Request  $request     
+     * * @param  \App\Models\CartContent  $cartContent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cart_content $cart_content)
+    public function update(Request $request, CartContent $cartContent)
     {
         //
     }
@@ -75,10 +75,10 @@ class CartContentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cart_content  $cart_content
+     * @param  \App\Models\CartContent  $cartContent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart_content $cart_content)
+    public function destroy(CartContent $cartContent)
     {
         //
     }
