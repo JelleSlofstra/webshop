@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ProductSize;
 use Illuminate\Database\Seeder;
 
 class ProductSizeSeeder extends Seeder
@@ -13,6 +14,9 @@ class ProductSizeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        ProductSize::create(['name' => 'Small']);
+        ProductSize::create(['name' => 'Medium']);
+        ProductSize::create(['name' => 'Large']);
+
     }
 }
