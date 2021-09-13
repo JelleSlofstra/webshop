@@ -23,13 +23,26 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'username' => $this->faker->userName(),
+            'role_id' => 2,
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => bcrypt('Gorilla1!'), // password
             'remember_token' => Str::random(10),
         ];
     }
+    //         $table->id();
+    //         $table->string('first_name');
+    //         $table->string('last_name');
+    //         $table->string('username')->unique();
+    //         $table->string('email')->unique();
+    //         $table->timestamp('email_verified_at')->nullable();
+    //         $table->string('password');
+    //         $table->rememberToken();
+    //         $table->timestamps();
+    //         $table->foreignId('role_id')->references('id')->on('roles');
 
     /**
      * Indicate that the model's email address should be unverified.
