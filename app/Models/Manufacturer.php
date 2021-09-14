@@ -10,4 +10,9 @@ class Manufacturer extends Model
     use HasFactory;
 
     protected $table = 'manufacturers';
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\CategoryImage;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,6 +29,7 @@ class HomeController extends Controller
 
         return view('home/home', [
             'categories'=> Category::all(),
+            'images' => CategoryImage::all()
         ]);
     }
 }
