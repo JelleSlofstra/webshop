@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\CategoryImage;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,11 +24,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function show()
+    public function show(Category $category )
     {
 
         return view('home/home', [
             'categories'=> Category::all(),
+            'products'=> Product::all(),
+            'images' => CategoryImage::all()
         ]);
     }
 }
