@@ -4,8 +4,8 @@
 <div class="container">
     <h1>{{$product->name}}</h1>
     <a href="/">Home</a> > 
-    <a href="route(categories.show, $product->category->id)">{{$product->category->name}}</a> >
-    <a href="route(products.show, $product->id">{{$product->name}}</a>
+    <a href="{{route('categories.show', $product->category->id)}}">{{$product->category->name}}</a> >
+    <a href="{{route('products.show', $product->id)}}">{{$product->name}}</a>
 
     <div class="row justify-content-center">
 
@@ -16,7 +16,8 @@
                 
                 <div class="card-body">
                     <h3 class="card-title">{{$product->name}}</h3> 
-                    <h5 class="card-subtitle">Merk: {{$product->manufacturer->name}}, categorie: {{$product->category->name}}</h2>  
+                    <h5 class="card-subtitle">Merk: <a href="{{route('manufacturers.show', $product->manufacturer->id)}}">{{$product->manufacturer->name}}</a>
+                    , categorie: <a href="{{route('categories.show', $product->category->id)}}">{{$product->category->name}}</a></h2>  
                     <p>{{$product->description}}</p>                        
                 </div>
             </div>
@@ -24,7 +25,7 @@
 
         <!-- bestelopties -->
         <div class="col-md-3">
-            <div class="card">
+            <div class="container">
                 <h2 style="color:red">{{$product->price}} Euro</h2>
                 <h2>Bestelopties</h2>
                 <form action="">

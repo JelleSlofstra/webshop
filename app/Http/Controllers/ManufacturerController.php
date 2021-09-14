@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,11 @@ class ManufacturerController extends Controller
      */
     public function show(Manufacturer $manufacturer)
     {
-        //
+        return view('manufacturers.show', [
+            'categories'    => Category::all(),
+            'manufacturer'  => $manufacturer,
+            'products'      => $manufacturer->products
+        ]);
     }
 
     /**
