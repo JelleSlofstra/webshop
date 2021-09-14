@@ -24,12 +24,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function show(Category $category )
+    public function show()
     {
 
         return view('home/home', [
             'categories'=> Category::all(),
-            'products'=> Product::all(),
             'images' => CategoryImage::all()
         ]);
     }
