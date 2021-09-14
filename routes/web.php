@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -14,13 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/laravel', function () {
     return view('welcome', [
         'categories' => Category::all() 
     ]);
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/categories', App\Http\Controllers\CategoryController::class);
+
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'show'])->name('root');
+
+Route::resource('/categories', \App\Http\Controllers\CategoryController::class);
