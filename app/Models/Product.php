@@ -11,6 +11,8 @@ class Product extends Model
 
     protected $table = 'products';
 
+    protected $with = ['manufacturer', 'category', 'productImages'];
+
     public function manufacturer()
     {
         return $this->belongsTo(Manufacturer::class);
@@ -30,4 +32,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductVariant::class);
     }
+
+    // public function productColours()
+    // {
+    //     return $this->hasManyThrough(ProductColour::class, ProductVariant::class);
+    // }
 }

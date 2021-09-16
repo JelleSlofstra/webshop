@@ -11,9 +11,11 @@
         </div>
         <div class="col-md-10">
             <div class="row justify-content-center">
-                @foreach ($products as $product)
-                    @include('partials.productcard')
-                @endforeach
+                <div class="card-group">
+                    @foreach ($products as $product)
+                        @include('partials.productcard')
+                    @endforeach
+                </div>
             </div>
         </div>           
     </div>

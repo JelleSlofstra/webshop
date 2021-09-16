@@ -10,4 +10,9 @@ class ProductVariant extends Model
     use HasFactory;
 
     protected $table = 'product_variants';
+
+    // public function productColours()
+    // {
+    //     return $this->belongsTo(ProductColour::class);
+    // }
 }

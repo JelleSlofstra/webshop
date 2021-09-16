@@ -9,9 +9,11 @@
         <div class="col-md-10">
             <h1>Alles van het merk '{{$manufacturer->name}}'</h1>
             <div class="row justify-content-center">
-                @foreach ($products as $product)
-                    @include('partials.productcard')
-                @endforeach
+                <div class="card-group">
+                    @foreach ($products as $product)
+                        @include('partials.productcard')
+                    @endforeach
+                </div>
             </div>
         </div>           
     </div>
