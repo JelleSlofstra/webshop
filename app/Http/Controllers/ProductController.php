@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Manufacturer;
 use App\Models\Product;
 use App\Models\ProductGender;
 use App\Models\ProductSize;
@@ -51,6 +52,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view('products/show', [
+            'manufacturers' => Manufacturer::all(),
             'categories' => Category::all(),
             'genders'    => ProductGender::all(),
             'colours'    => ProductColour::all(),
