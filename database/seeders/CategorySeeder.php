@@ -14,11 +14,29 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::create(['name' => 'stadsfietsen']);
-        Category::create(['name' => 'mountainbikes']);
-        Category::create(['name' => 'racefietsen']);
-        Category::create(['name' => 'E-bikes']);
-        Category::create(['name' => 'kinderfietsen']);
-        Category::create(['name' => 'accesoires']);
+        Category::create([
+            'image' => 'stadsfiets.jpg',
+            'name'  => 'Stadsfietsen'
+        ]);
+        Category::create([
+            'image' => 'mtb.jpg',
+            'name'  => 'Mountainbikes'
+        ]);
+        Category::create([
+            'image' => 'racefiets.jpg',
+            'name'  => 'Racefietsen'
+        ]);
+        Category::create([
+            'image' => 'ebike.jpg',
+            'name'  => 'E-bikes'
+        ]);
+        Category::create([
+            'image' => 'kinderfiets.jpg',
+            'name'  => 'Kinderfietsen'
+        ]);
+        Category::create([
+            'image' => 'accessoires.jpg',
+            'name'  => 'Accessoires'
+        ]);
     }
 }
