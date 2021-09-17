@@ -15,8 +15,8 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });
     }

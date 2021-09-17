@@ -24,6 +24,7 @@ Route::get('/laravel', function () {
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::post('/ajax', [\App\Http\Controllers\HomeController::class, 'ajax'])->name('ajax');
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'show'])->name('root');
 
 Route::resource('/categories', \App\Http\Controllers\CategoryController::class);

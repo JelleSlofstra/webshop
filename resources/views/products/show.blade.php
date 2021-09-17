@@ -10,14 +10,30 @@
     <div class="row justify-content-center">
 
         <!-- productgedeelte -->
-        <div class="col-md-9">            
+        <div class="col-md-9">  
             <div class="card">
-                <img src="../images/{{$product->productImages->first->image->image}}" class="card-img-top rounded" alt="...">                                               
-                
+                <div id="carouselControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach ($product->productImages as $image)
+                        <div class="carousel-item @if ($loop->first)active @endif">
+                            <img src="../images/{{$image->image}}" class="d-block" alt="...">
+                        </div>
+                    @endforeach
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>              
+                                  
                 <div class="card-body">
                     <h3 class="card-title">{{$product->name}}</h3> 
                     <h5 class="card-subtitle">Merk: <a href="{{route('manufacturers.show', $product->manufacturer->id)}}">{{$product->manufacturer->name}}</a>
-                    , categorie: <a href="{{route('categories.show', $product->category->id)}}">{{$product->category->name}}</a></h2>  
+                    , categorie: <a href="{{route('categories.show', $product->category->id)}}">{{$product->category->name}}</a></h5>  
                     <p>{{$product->description}}</p>                        
                 </div>
             </div>
