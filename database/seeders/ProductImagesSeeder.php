@@ -215,6 +215,106 @@ class ProductImagesSeeder extends Seeder
             'product_id'    => 24
         ]);
 
+        //children's bikes
+        ProductImage::create([
+            'image'         => 'childsbikes/nippon1.jpg',
+            'product_id'    => 25
+        ]);
+        ProductImage::create([
+            'image'         => 'childsbikes/nippon2.jpg',
+            'product_id'    => 25
+        ]);
+        ProductImage::create([
+            'image'         => 'childsbikes/zhongguo1.jpg',
+            'product_id'    => 26
+        ]);
+        ProductImage::create([
+            'image'         => 'childsbikes/zhongguo2.jpg',
+            'product_id'    => 26
+        ]);
+        ProductImage::create([
+            'image'         => 'childsbikes/siam1.jpg',
+            'product_id'    => 27
+        ]);
+        ProductImage::create([
+            'image'         => 'childsbikes/siam2.jpg',
+            'product_id'    => 27
+        ]);
+        ProductImage::create([
+            'image'         => 'childsbikes/myanmar1.jpg',
+            'product_id'    => 28
+        ]);
+        ProductImage::create([
+            'image'         => 'childsbikes/myanmar2.jpg',
+            'product_id'    => 28
+        ]);
+        ProductImage::create([
+            'image'         => 'childsbikes/indonesia1.jpg',
+            'product_id'    => 29
+        ]);
+        ProductImage::create([
+            'image'         => 'childsbikes/indonesia2.jpg',
+            'product_id'    => 29
+        ]);
+        ProductImage::create([
+            'image'         => 'childsbikes/malaysia1.jpg',
+            'product_id'    => 30
+        ]);
+        ProductImage::create([
+            'image'         => 'childsbikes/malaysia2.jpg',
+            'product_id'    => 30
+        ]);
+
+        //accessoires
+        ProductImage::create([
+            'image'         => 'accessoires/phoneholder1.jpg',
+            'product_id'    => 31
+        ]);
+        ProductImage::create([
+            'image'         => 'accessoires/phoneholder2.jpg',
+            'product_id'    => 31
+        ]);
+        ProductImage::create([
+            'image'         => 'accessoires/gelzadel1.jpg',
+            'product_id'    => 32
+        ]);
+        ProductImage::create([
+            'image'         => 'accessoires/gelzadel2.jpg',
+            'product_id'    => 32
+        ]);
+        ProductImage::create([
+            'image'         => 'accessoires/fietstas1.jpg',
+            'product_id'    => 33
+        ]);
+        ProductImage::create([
+            'image'         => 'accessoires/fietstas2.jpg',
+            'product_id'    => 33
+        ]);
+        ProductImage::create([
+            'image'         => 'accessoires/kabelslot1.jpg',
+            'product_id'    => 34
+        ]);
+        ProductImage::create([
+            'image'         => 'accessoires/kabelslot2.jpg',
+            'product_id'    => 34
+        ]);
+        ProductImage::create([
+            'image'         => 'accessoires/fietspomp1.jpg',
+            'product_id'    => 35
+        ]);
+        ProductImage::create([
+            'image'         => 'accessoires/fietspomp2.jpg',
+            'product_id'    => 35
+        ]);
+        ProductImage::create([
+            'image'         => 'accessoires/krat1.jpg',
+            'product_id'    => 36
+        ]);
+        ProductImage::create([
+            'image'         => 'accessoires/krat2.jpg',
+            'product_id'    => 36
+        ]);
+
         //placeholders
         foreach (Product::all() as $product)
         {
