@@ -40,6 +40,12 @@
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
+
+                <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
+                    <form method="GET" action='/#'>
+                        <input type="text" name="search" placeholder="Vind Iets" class="bg-transparent placeholder-black font-semibold text-sm">
+                    </form>
+                </div>
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
