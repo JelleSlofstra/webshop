@@ -87,32 +87,8 @@
                     </div>
                 
                 </form>
-                <button id="knupke">Click me!</button>
             </div>
         </div>         
     </div>
 </div>
 @endsection
-
-<!-- @push('scripts')
-    <script>
-        // $ betekent jQuery
-        $(document).ready(function(){
-
-            $('#knupke').on('click', function(){
-                axios({
-                    method: 'POST',
-                    url: '{{ route("ajax") }}',
-                    data: {
-                        first_name: 'Donald',
-                        last_name: 'Duck'
-                    }
-                }).then(function(response){
-
-                }).catch(function(error){
-
-                })
-            })
-        })
-    </script>
-@endpush -->
