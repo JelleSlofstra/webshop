@@ -26,7 +26,6 @@ class HomeController extends Controller
      */
     public function show()
     {
-
         return view('home/home', [
             'manufacturers' => Manufacturer::all(),
             'categories'=> Category::all()
