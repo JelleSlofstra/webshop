@@ -49,6 +49,7 @@ class ManufacturerController extends Controller
     {
         return view('manufacturers.show', [
             'categories'    => Category::all(),
+            'manufacturers' => Manufacturer::all(),
             'manufacturer'  => $manufacturer,
             'products'      => $manufacturer->products
         ]);
