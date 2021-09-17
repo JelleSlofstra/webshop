@@ -33,7 +33,7 @@
                 <div class="card-body">
                     <h3 class="card-title">{{$product->name}}</h3> 
                     <h5 class="card-subtitle">Merk: <a href="{{route('manufacturers.show', $product->manufacturer->id)}}">{{$product->manufacturer->name}}</a>
-                    , categorie: <a href="{{route('categories.show', $product->category->id)}}">{{$product->category->name}}</a></h2>  
+                    , categorie: <a href="{{route('categories.show', $product->category->id)}}">{{$product->category->name}}</a></h5>  
                     <p>{{$product->description}}</p>                        
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     </div>
                     <div>
                         <select id="colour" name="colour">
-                            @foreach ($product->productVariants->productColours as $colour)
+                            @foreach ($colours as $colour)
                                 <option value="{{$colour->colour}}">{{$colour->colour}}</option>
                             @endforeach
                         </select>
@@ -87,8 +87,32 @@
                     </div>
                 
                 </form>
+                <button id="knupke">Click me!</button>
             </div>
         </div>         
     </div>
 </div>
 @endsection
+
+<!-- @push('scripts')
+    <script>
+        // $ betekent jQuery
+        $(document).ready(function(){
+
+            $('#knupke').on('click', function(){
+                axios({
+                    method: 'POST',
+                    url: '{{ route("ajax") }}',
+                    data: {
+                        first_name: 'Donald',
+                        last_name: 'Duck'
+                    }
+                }).then(function(response){
+
+                }).catch(function(error){
+
+                })
+            })
+        })
+    </script>
+@endpush -->

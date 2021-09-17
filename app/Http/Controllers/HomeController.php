@@ -32,4 +32,9 @@ class HomeController extends Controller
             'categories'=> Category::all()
         ]);
     }
+
+    // public function ajax(Request $request)
+    // {
+    //     dd($request->all());
+    // }
 }
