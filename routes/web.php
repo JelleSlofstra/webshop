@@ -3,6 +3,7 @@
 
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::get('/laravel', function () {
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::post('/ajax', [\App\Http\Controllers\HomeController::class, 'ajax'])->name('ajax');
+Route::post('/ajax', [\App\Http\Controllers\ProductController::class, 'ajax'])->name('ajax');
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'show'])->name('root');
 
 Route::resource('/categories', \App\Http\Controllers\CategoryController::class);

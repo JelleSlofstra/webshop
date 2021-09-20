@@ -44,8 +44,6 @@
             <div class="container">
                 <h2 style="color:red">{{$product->price}} Euro</h2>
                 <h2>Bestelopties</h2>
-                <form action="">
-
                     <!-- Kleuropties -->
                     <div>
                         <label for="colour">Kies een kleur</label>
@@ -53,7 +51,7 @@
                     <div>
                         <select id="colour" name="colour">
                             @foreach ($colours as $colour)
-                                <option value="{{$colour->colour}}">{{$colour->colour}}</option>
+                                <option value="{{$colour->id}}">{{$colour->colour}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -65,7 +63,7 @@
                     <div>
                         <select id="size" name="size">
                             @foreach ($sizes as $size)
-                                <option value="{{$size->name}}">{{$size->name}}</option>
+                                <option value="{{$size->id}}">{{$size->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -77,7 +75,7 @@
                     <div>
                         <select id="gender" name="gender">
                             @foreach ($genders as $gender)
-                                <option value="{{$gender->gender}}">{{$gender->gender}}</option>
+                                <option value="{{$gender->id}}">{{$gender->gender}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -85,10 +83,41 @@
                     <div>
                         <button type="submit">In winkelwagen</button>
                     </div>
-                
-                </form>
+
+                    <div class="product-variant">
+                        <button p_id="{{$product->id}}">zoek de variant</button>
+                    </div>
             </div>
         </div>         
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).on('click', '.product-variant button', function(event){
+            let size_id = $('#size').val()
+            let colour_id = $('#colour').val()
+            let gender_id =  $('#gender').val()
+            let product_id = $(this).attr('p_id')
+
+            axios({
+                method: 'POST',
+                url:    '{{ route("ajax") }}',
+                data: {
+                    size_id: size_id,
+                    colour_id: colour_id,
+                    gender_id: gender_id,
+                    product_id: product_id
+                }
+            }).then(function(response) {
+                if (response.data.succes) {
+                    $('.product-variant').append('<div> Variantnummer: ' + response.data.variant.id + '</div>')
+                }
+                console.log(response.data.variant.id)
+            }).catch(function(error){
+
+            })
+        })
+    </script>
+@endpush
