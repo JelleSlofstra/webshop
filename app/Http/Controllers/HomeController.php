@@ -42,8 +42,16 @@ class HomeController extends Controller
         }
     }
 
-    // public function ajax(Request $request)
-    // {
-    //     dd($request->all());
-    // }
+    public function ajax(Request $request)
+    {
+        return response()->json([
+            'success' => true,
+            'message' => 'dagobert'
+        ]);
+    }
+
+    Public function test()
+    {
+        return view('test');
+    }
 }

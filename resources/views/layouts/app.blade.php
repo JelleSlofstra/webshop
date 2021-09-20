@@ -28,5 +28,5 @@
         </main>
     </div>
 </body>
-    <!-- @stack('scripts') -->
+    @stack('scripts')
 </html>

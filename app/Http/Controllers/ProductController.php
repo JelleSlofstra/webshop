@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductGender;
 use App\Models\ProductSize;
 use App\Models\ProductColour;
+use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -93,5 +94,20 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function ajax(Request $request)
+    {
+        $productVariant = ProductVariant::get()
+                            ->where('product_id', $request->product_id)
+                            ->where('product_size', $request->size_id)
+                            ->where('product_gender', $request->gender_id)
+                            ->where('product_colour', $request->colour_id);
+
+        return response()->json([
+            'succes'    => true,
+            'message'   => 'zoek de variant',
+            'variant'   => $productVariant->first()  
+        ]);
     }
 }
