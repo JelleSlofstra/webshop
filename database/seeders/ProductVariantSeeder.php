@@ -33,9 +33,9 @@ class ProductVariantSeeder extends Seeder
                     {
                         ProductVariant::create([
                             'product_id'        => $product->id,
-                            'product_size'      => $size->id,
-                            'product_colour'    => $colour->id,
-                            'product_gender'    => $gender->id,
+                            'product_size_id'   => $size->id,
+                            'product_colour_id' => $colour->id,
+                            'product_gender_id' => $gender->id,
                         ]);
                     }
                 }

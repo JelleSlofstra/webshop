@@ -14,8 +14,8 @@ class ProductGenderSeeder extends Seeder
      */
     public function run()
     {
-        ProductGender::create(['gender' => 'Neutral']);
-        ProductGender::create(['gender' => 'Female']);
-        ProductGender::create(['gender' => 'Male']);
+        ProductGender::create(['name' => 'Neutral']);
+        ProductGender::create(['name' => 'Female']);
+        ProductGender::create(['name' => 'Male']);
     }
 }
