@@ -51,7 +51,7 @@
                     <div>
                         <select id="colour" name="colour">
                             @foreach ($colours as $colour)
-                                <option value="{{$colour->id}}">{{$colour->colour}}</option>
+                                <option value="{{$colour->id}}">{{$colour->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -75,17 +75,16 @@
                     <div>
                         <select id="gender" name="gender">
                             @foreach ($genders as $gender)
-                                <option value="{{$gender->id}}">{{$gender->gender}}</option>
+                                <option value="{{$gender->id}}">{{$gender->name}}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div>
-                        <button type="submit">In winkelwagen</button>
+                    <div class="add-to-cart">
+                        <button p_id="{{$product->id}}">In winkelwagen</button>
                     </div>
 
                     <div class="product-variant">
-                        <button p_id="{{$product->id}}">zoek de variant</button>
                     </div>
             </div>
         </div>         
@@ -95,7 +94,7 @@
 
 @push('scripts')
     <script>
-        $(document).on('click', '.product-variant button', function(event){
+        $(document).on('click', '.add-to-cart button', function(event){
             let size_id = $('#size').val()
             let colour_id = $('#colour').val()
             let gender_id =  $('#gender').val()
@@ -103,7 +102,7 @@
 
             axios({
                 method: 'POST',
-                url:    '{{ route("ajax") }}',
+                url:    '{{ route("addToCart") }}',
                 data: {
                     size_id: size_id,
                     colour_id: colour_id,
@@ -112,12 +111,11 @@
                 }
             }).then(function(response) {
                 if (response.data.succes) {
-                    $('.product-variant').append('<div> Variantnummer: ' + response.data.variant.id + '</div>')
+                    console.log(response.data.variant.id)
                 }
-                console.log(response.data.variant.id)
             }).catch(function(error){
 
             })
         })
-    </script>
+    </script>   
 @endpush

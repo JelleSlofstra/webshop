@@ -25,9 +25,14 @@ Route::get('/laravel', function () {
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/ajax', [\App\Http\Controllers\ProductController::class, 'ajax'])->name('ajax');
+Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'show'])->name('root');
 
+//cart functionality
+Route::post('/addtocart', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('addToCart');
+Route::get('/emptycart', [\App\Http\Controllers\CartController::class, 'emptyCart'])->name('emptyCart');
+
+//resource routes
 Route::resource('/categories', \App\Http\Controllers\CategoryController::class);
 Route::resource('/products', \App\Http\Controllers\ProductController::class);
 Route::resource('/manufacturers', \App\Http\Controllers\ManufacturerController::class);
