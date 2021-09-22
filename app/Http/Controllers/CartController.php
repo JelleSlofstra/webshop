@@ -34,7 +34,8 @@ class CartController extends Controller
                 'categories'    => Category::all(),
                 'manufacturers' => Manufacturer::all(),
                 'variants'      => $productVariants,
-                'cart'          => session::get('cart')
+                'cart'          => session::get('cart'),
+                'totalprice'    => Cart::totalPrice()
             ]);
         }        
     }
@@ -56,7 +57,7 @@ class CartController extends Controller
             if (session::exists('cart')) {
                 $session = session::get('cart');
             } else {
-                $session = session::put('cart', []);
+                $session = [];
             }
 
             //add one of this variant to $session
@@ -69,20 +70,12 @@ class CartController extends Controller
             //change the 'cart' in the session from $session
             session::put('cart', $session);
 
-            // built the html for the cart
-            if($request->cart)
-            {
-                return response()->json([
-                    'success'    => true,
-                    'variant'   => $productVariant,
-                    'html'      => $this->buildCartHtml()
-                ]);
-            } else {                
-                return response()->json([
-                    'success'    => true,
-                    'variant'   => $productVariant
-                ]);
-            }
+            // built the html for the cart            
+            return response()->json([
+                'success'   => true,
+                'variant'   => $productVariant,
+                'html'      => Cart::buildHtml()
+            ]);
         } 
         catch(Exception $e) {
             return response()->json([
@@ -92,29 +85,47 @@ class CartController extends Controller
         }        
     }
 
-    public function emptyCart()
+    public function removeFromCart(Request $request)
+    {
+        try {
+            //get the productvariant
+            $productVariant = ProductVariant::find($request->productVariantId);
+
+            //get the cart contents from the session
+            $session = session::get('cart');
+
+            //remove one of this variant from the $session
+            if ($session[$productVariant->id] === 1) {
+                unset($session[$productVariant->id]);
+            } else {
+                $session[$productVariant->id] -= 1;
+            }
+
+            //change the 'cart' in the session from $session
+            if (empty($session)) {
+                session::remove('cart');
+            } else {
+                session::put('cart', $session);
+            }
+
+            return response()->json([
+                'success'   => true,
+                'variant'   => $productVariant,
+                'html'      => Cart::buildHtml()
+            ]);
+        }
+        catch(Exception $e) {
+            return response()->json([
+                'success'   => false,
+                'message'   => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public static function emptyCart()
     {        
         session::remove('cart');
         return redirect("/cart");
-    }
-
-    private function buildCartHtml()
-    {
-        $variants = session::get('cart');
-        $html = '';
-        foreach ($variants as $variantId => $quantity) {
-            $variant = ProductVariant::find($variantId); 
-            $html .= '<div class="col-12 card">';
-            $html .= $quantity . 'x Model ' . $variant->product->name . ':';
-            $html .= '<ul>';
-            $html .= '<li>Kleur: ' . $variant->colour->name . '</li>';
-            $html .= '<li>Gender: ' . $variant->gender->name . '</li>';
-            $html .= '<li>Maat: ' . $variant->size->name . '</li>';
-            $html .= '</ul>';
-            $html .= '<div class="add-to-cart"> <button pv_id="' . $variantId . '">Voeg toe</button></div>';
-            $html .= '</div>';
-        }
-        return $html;
     }
 
     /**

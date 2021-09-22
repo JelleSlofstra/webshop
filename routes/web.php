@@ -30,6 +30,7 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'show'])->name('ro
 
 //cart functionality
 Route::post('/addtocart', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('addToCart');
+Route::post('/removefromcart', [\App\Http\Controllers\CartController::class, 'removeFromCart'])->name('removeFromCart');
 Route::get('/emptycart', [\App\Http\Controllers\CartController::class, 'emptyCart'])->name('emptyCart');
 
 //resource routes
