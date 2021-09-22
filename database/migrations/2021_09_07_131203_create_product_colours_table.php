@@ -15,7 +15,7 @@ class CreateProductColoursTable extends Migration
     {
         Schema::create('product_colours', function (Blueprint $table) {
             $table->id();
-            $table->string('colour');
+            $table->string('name');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

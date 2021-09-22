@@ -14,8 +14,8 @@ class ProductColourSeeder extends Seeder
      */
     public function run()
     {
-        ProductColour::create(['colour' => 'Black']);
-        ProductColour::create(['colour' => 'Yellow']);
-        ProductColour::create(['colour' => 'Red']);
+        ProductColour::create(['name' => 'Black']);
+        ProductColour::create(['name' => 'Yellow']);
+        ProductColour::create(['name' => 'Red']);
     }
 }

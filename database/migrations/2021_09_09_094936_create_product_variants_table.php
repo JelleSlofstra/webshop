@@ -15,12 +15,12 @@ class CreateProductVariantsTable extends Migration
     {
         Schema::create('product_variants', function (Blueprint $table) {
             $table->id();
-        $table->timestamps();
-        $table->foreignId('product_id')->references('id')->on('products');
-        $table->foreignId('product_size')->references('id')->on('product_sizes');
-        $table->foreignId('product_colour')->references('id')->on('product_colours');
-        $table->foreignId('product_gender')->references('id')->on('product_genders');
-        $table->timestamp('deleted_at')->nullable();
+            $table->timestamps();
+            $table->foreignId('product_id')->references('id')->on('products');
+            $table->foreignId('product_size_id')->references('id')->on('product_sizes');
+            $table->foreignId('product_colour_id')->references('id')->on('product_colours');
+            $table->foreignId('product_gender_id')->references('id')->on('product_genders');
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
