@@ -16,7 +16,7 @@
                 <div class="carousel-inner">
                     @foreach ($product->productImages as $image)
                         <div class="carousel-item @if ($loop->first)active @endif">
-                            <img src="../images/{{$image->image}}" class="d-block" alt="...">
+                            <img src="../images/{{$image->image}}" class="d-block" id="carousel-image" alt="...">
                         </div>
                     @endforeach
                     </div>

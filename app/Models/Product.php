@@ -38,7 +38,7 @@ class Product extends Model
         if ($filters['search'] ?? false)    {
             $query
                 ->where('name', 'like', '%' . request('search') . '%' )
-                ->whereOr('description', 'like', '%' . request('search') . '%' );
+                ->OrWhere('description', 'like', '%' . request('search') . '%' );            
     }}
 
 }
