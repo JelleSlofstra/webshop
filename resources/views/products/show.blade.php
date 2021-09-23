@@ -44,48 +44,45 @@
             <div class="container">
                 <h2 style="color:red">{{$product->price}} Euro</h2>
                 <h2>Bestelopties</h2>
-                    <!-- Kleuropties -->
-                    <div>
-                        <label for="colour">Kies een kleur</label>
-                    </div>
-                    <div>
-                        <select id="colour" name="colour">
-                            @foreach ($colours as $colour)
-                                <option value="{{$colour->id}}">{{$colour->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <!-- Kleuropties -->
+                <div>
+                    <label for="colour">Kies een kleur</label>
+                </div>
+                <div>
+                    <select id="colour" name="colour">
+                        @foreach ($colours as $colour)
+                            <option value="{{$colour->id}}">{{$colour->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-                    <!-- Maatopties -->
-                    <div>
-                        <label for="size">Kies een maat</label>
-                    </div>
-                    <div>
-                        <select id="size" name="size">
-                            @foreach ($sizes as $size)
-                                <option value="{{$size->id}}">{{$size->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    
-                    <!-- Genderopties -->
-                    <div>
-                        <label for="gender">Kies een type</label>
-                    </div>
-                    <div>
-                        <select id="gender" name="gender">
-                            @foreach ($genders as $gender)
-                                <option value="{{$gender->id}}">{{$gender->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <!-- Maatopties -->
+                <div>
+                    <label for="size">Kies een maat</label>
+                </div>
+                <div>
+                    <select id="size" name="size">
+                        @foreach ($sizes as $size)
+                            <option value="{{$size->id}}">{{$size->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                
+                <!-- Genderopties -->
+                <div>
+                    <label for="gender">Kies een type</label>
+                </div>
+                <div>
+                    <select id="gender" name="gender">
+                        @foreach ($genders as $gender)
+                            <option value="{{$gender->id}}">{{$gender->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-                    <div class="add-to-cart">
-                        <button p_id="{{$product->id}}">In winkelwagen</button>
-                    </div>
-
-                    <div class="product-variant">
-                    </div>
+                <div class="add-to-cart">
+                    <button p_id="{{$product->id}}">In winkelwagen</button>
+                </div>
             </div>
         </div>         
     </div>
@@ -93,29 +90,5 @@
 @endsection
 
 @push('scripts')
-    <script>
-        $(document).on('click', '.add-to-cart button', function(event){
-            let size_id = $('#size').val()
-            let colour_id = $('#colour').val()
-            let gender_id =  $('#gender').val()
-            let product_id = $(this).attr('p_id')
-
-            axios({
-                method: 'POST',
-                url:    '{{ route("addToCart") }}',
-                data: {
-                    size_id: size_id,
-                    colour_id: colour_id,
-                    gender_id: gender_id,
-                    product_id: product_id
-                }
-            }).then(function(response) {
-                if (response.data.succes) {
-                    console.log(response.data.variant.id)
-                }
-            }).catch(function(error){
-
-            })
-        })
-    </script>   
+    @include('partials/scripts/addThisToCart')  
 @endpush
