@@ -39,13 +39,19 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cart') }}" id="cart" role="button" aria-haspopup="true" aria-expanded="false">
+                        Winkelwagen
+                    </a>
+                </li>
 
-                <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
+                <li class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
                     <form method="GET" action='/#'>
                         <input type="text" name="search" placeholder="Vind Iets" class="bg-transparent placeholder-black font-semibold text-sm">
                     </form>
-                </div>
+                </li>
+
+                <!-- Authentication Links -->
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
