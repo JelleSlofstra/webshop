@@ -29,8 +29,8 @@ class Cart extends Model
             //html for a non-empty cart
             $variants = session::get('cart');
             $html = '<h1>Winkelwagen</h1>';
-            $html .= '<a href="/emptycart"><button>Winkelwagen leegmaken</button></a>';
-            $html .= ' <a href="/checkout"><button>Afrekenen</button></a>';
+            $html .= '<a href="' . route("emptyCart") . '"><button>Winkelwagen leegmaken</button></a>';
+            $html .= ' <a href="' . route("checkout") . '"><button>Afrekenen</button></a>';
             $html .= '<div class="row">';
             foreach ($variants as $variantId => $quantity) {
                 $variant = ProductVariant::find($variantId); 
@@ -53,7 +53,7 @@ class Cart extends Model
                 $html .= '</div></div></div>';
             } 
             $html .= '</div> Totaalprijs: &euro;' . self::totalPrice();
-            $html .= ' <a href="/checkout"><button>Afrekenen</button></a>';
+            $html .= ' <a href="' . route("checkout") . '"><button>Afrekenen</button></a>';
         } else {
             //html for an empty cart
             $html = '<h1>Winkelwagen</h1>';
@@ -61,9 +61,4 @@ class Cart extends Model
         }
         return $html;        
     }
-    // <ul>                        
-    //     <li>Prijs excl btw: {{$variant->product->price}}</li>
-    //     <li>BTW: {{$variant->product->vatPercentage()}}%</li>
-    //     <li>Totaalprijs voor {{$cart[$variant->id]}} stuks: {{$variant->product->vatIncPrice($cart[$variant->id])}}</li>
-    // </ul> 
 }
