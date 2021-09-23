@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\CartContent;
 use App\Models\ProductVariant;
 use App\Models\Category;
 use App\Models\Manufacturer;
@@ -145,8 +146,19 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $cart_contents = session::get('cart');
+
+        $cart = cart::create(['user_id'=> 1]);
+        
+        foreach ($cart_contents as $variant_id=>$amount)
+        {
+            CartContent::create([
+                'cart_id' => $cart->id,    
+                'product_variant_id' => $variant_id,
+                'amount' => $amount,
+            ]);
+        }
     }
 
     /**
