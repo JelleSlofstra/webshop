@@ -15,7 +15,7 @@ class CreateProductGendersTable extends Migration
     {
         Schema::create('product_genders', function (Blueprint $table) {
             $table->id();
-            $table->enum('gender', ['Male', 'Female', 'Neutral']);
+            $table->enum('name', ['Male', 'Female', 'Neutral']);
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

@@ -16,7 +16,7 @@
                 <div class="carousel-inner">
                     @foreach ($product->productImages as $image)
                         <div class="carousel-item @if ($loop->first)active @endif">
-                            <img src="../images/{{$image->image}}" class="d-block" alt="...">
+                            <img src="../images/{{$image->image}}" class="d-block" id="carousel-image" alt="...">
                         </div>
                     @endforeach
                     </div>
@@ -44,8 +44,6 @@
             <div class="container">
                 <h2 style="color:red">{{$product->price}} Euro</h2>
                 <h2>Bestelopties</h2>
-                <form action="">
-
                     <!-- Kleuropties -->
                     <div>
                         <label for="colour">Kies een kleur</label>
@@ -53,7 +51,7 @@
                     <div>
                         <select id="colour" name="colour">
                             @foreach ($colours as $colour)
-                                <option value="{{$colour->colour}}">{{$colour->colour}}</option>
+                                <option value="{{$colour->id}}">{{$colour->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -65,7 +63,7 @@
                     <div>
                         <select id="size" name="size">
                             @foreach ($sizes as $size)
-                                <option value="{{$size->name}}">{{$size->name}}</option>
+                                <option value="{{$size->id}}">{{$size->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -77,18 +75,47 @@
                     <div>
                         <select id="gender" name="gender">
                             @foreach ($genders as $gender)
-                                <option value="{{$gender->gender}}">{{$gender->gender}}</option>
+                                <option value="{{$gender->id}}">{{$gender->name}}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div>
-                        <button type="submit">In winkelwagen</button>
+                    <div class="add-to-cart">
+                        <button p_id="{{$product->id}}">In winkelwagen</button>
                     </div>
-                
-                </form>
+
+                    <div class="product-variant">
+                    </div>
             </div>
         </div>         
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).on('click', '.add-to-cart button', function(event){
+            let size_id = $('#size').val()
+            let colour_id = $('#colour').val()
+            let gender_id =  $('#gender').val()
+            let product_id = $(this).attr('p_id')
+
+            axios({
+                method: 'POST',
+                url:    '{{ route("addToCart") }}',
+                data: {
+                    size_id: size_id,
+                    colour_id: colour_id,
+                    gender_id: gender_id,
+                    product_id: product_id
+                }
+            }).then(function(response) {
+                if (response.data.succes) {
+                    console.log(response.data.variant.id)
+                }
+            }).catch(function(error){
+
+            })
+        })
+    </script>   
+@endpush

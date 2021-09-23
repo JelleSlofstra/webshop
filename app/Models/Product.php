@@ -11,7 +11,7 @@ class Product extends Model
 
     protected $table = 'products';
 
-    protected $with = ['manufacturer', 'category', 'productImages'];
+    protected $with = ['manufacturer', 'category', 'productImages', 'productVariants'];
 
     public function manufacturer()
     {
@@ -32,13 +32,23 @@ class Product extends Model
     {
         return $this->hasMany(ProductVariant::class);
     }
+
+    public function vatPercentage()
+    {
+        return ($this->vat-1)*100;
+    }
+
+    public function vatIncPrice($amount)
+    {
+        return number_format($amount * $this->price * $this->vat, 2);
+    }
   
     public function scopeFilter($query, array $filters)
     {
         if ($filters['search'] ?? false)    {
             $query
                 ->where('name', 'like', '%' . request('search') . '%' )
-                ->whereOr('description', 'like', '%' . request('search') . '%' );
+                ->OrWhere('description', 'like', '%' . request('search') . '%' );            
     }}
 
 }
