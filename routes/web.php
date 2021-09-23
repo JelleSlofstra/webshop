@@ -40,4 +40,3 @@ Route::resource('/manufacturers', \App\Http\Controllers\ManufacturerController::
 
 // checkout
 Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'store'])->name('checkout');
-
