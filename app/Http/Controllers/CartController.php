@@ -71,10 +71,9 @@ class CartController extends Controller
             //change the 'cart' in the session from $session
             session::put('cart', $session);
 
-            // built the html for the cart            
+            // build the html for the cart            
             return response()->json([
                 'success'   => true,
-                'variant'   => $productVariant,
                 'html'      => Cart::buildHtml()
             ]);
         } 
@@ -111,7 +110,38 @@ class CartController extends Controller
 
             return response()->json([
                 'success'   => true,
-                'variant'   => $productVariant,
+                'html'      => Cart::buildHtml()
+            ]);
+        }
+        catch(Exception $e) {
+            return response()->json([
+                'success'   => false,
+                'message'   => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function removeAllFromCart(Request $request)
+    {
+        try {
+            //get the productvariant
+            $productVariant = ProductVariant::find($request->productVariantId);
+
+            //get the cart contents from the session
+            $session = session::get('cart');
+
+            //remove this variant from the $session
+            unset($session[$productVariant->id]);            
+
+            //change the 'cart' in the session from $session
+            if (empty($session)) {
+                session::remove('cart');
+            } else {
+                session::put('cart', $session);
+            }
+
+            return response()->json([
+                'success'   => true,
                 'html'      => Cart::buildHtml()
             ]);
         }

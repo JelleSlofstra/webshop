@@ -16,12 +16,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/laravel', function () {
-    return view('welcome', [
-        'categories' => Category::all() 
-    ]);
-});
-
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -31,6 +25,7 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'show'])->name('ro
 //cart functionality
 Route::post('/addtocart', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('addToCart');
 Route::post('/removefromcart', [\App\Http\Controllers\CartController::class, 'removeFromCart'])->name('removeFromCart');
+Route::post('/removeallfromcart', [\App\Http\Controllers\CartController::class, 'removeAllFromCart'])->name('removeAllFromCart');
 Route::get('/emptycart', [\App\Http\Controllers\CartController::class, 'emptyCart'])->name('emptyCart');
 
 //resource routes
