@@ -17,7 +17,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="categoryDropdown">
                         @foreach ($categories as $navcat)
-                            <a class="dropdown-item" href="{{ route('categories.show', $navcat->id) }}">{{$navcat->name}}</a>
+                            <a class="dropdown-item" href="{{ route('categories.show', $navcat) }}">{{$navcat->name}}</a>
                         @endforeach
                     </div>
                 </li>
@@ -30,7 +30,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="manufacturerDropdown">
                         @foreach ($manufacturers as $navmanu)
-                            <a class="dropdown-item" href="{{ route('manufacturers.show', $navmanu->id) }}">{{$navmanu->name}}</a>
+                            <a class="dropdown-item" href="{{ route('manufacturers.show', $navmanu) }}">{{$navmanu->name}}</a>
                         @endforeach
                     </div>
                 </li>

@@ -1,5 +1,5 @@
 <div class="col-md-6 mb-5">
-    <a href="{{ route('products.show', $product->id) }}">
+    <a href="{{ route('products.show', $product) }}">
         <div class="card product-card">
             <img src="../images/{{$product->productImages->first->image->image}}" class="card-img-top rounded product-images" alt="...">                                               
             
