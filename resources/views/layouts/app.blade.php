@@ -31,6 +31,6 @@
             @include('partials.footer')
         </div>
     </div>
-</body>
     @stack('scripts')
+</body>
 </html>
