@@ -8,13 +8,13 @@
     @endisset
 
     @isset($cart)
-    <a href="{{ route('emptyCart') }}"><button>Winkelwagen leegmaken</button></a>
-    <a href="{{ route('checkout') }}"><button>Afrekenen</button></a>
+    <a href="{{ route('emptyCart') }}"><button class="btn btn-primary">Winkelwagen leegmaken</button></a>
+    <a href="{{ route('checkout') }}"><button class="btn btn-primary">Afrekenen</button></a>
 
     
     <div class="row">
         @foreach($variants as $variant)
-            <div class="col-12 card">
+            <div class="col-12 card my-3 py-3">
                 <div class="row">
                     <div class="col-8">
                         {{$cart[$variant->id]}}x Model {{ $variant->product->name }}: 
@@ -25,28 +25,30 @@
                         </ul>
 
                         <div>
-                            <button id="add-one" pv_id="{{$variant->id}}">+</button>
-                            <button id="remove-one" pv_id="{{$variant->id}}">-</button>
+                            <button id="add-one" pv_id="{{$variant->id}}" class="btn btn-primary">+</button>
+                            <button id="remove-one" pv_id="{{$variant->id}}" class="btn btn-primary">-</button>
+                            <button id="remove-all" pv_id="{{$variant->id}}" class="btn btn-primary"><i class="far fa-trash-alt"></i></button>
                         </div>
                     </div>
                     <div class="col-4">
                         <ul>                        
-                            <li>Prijs excl btw: &euro;{{$variant->product->price}}</li>
+                            <li>Prijs excl btw: &euro; {{$variant->product->price}}</li>
                             <li>BTW: {{$variant->product->vatPercentage()}}%</li>
-                            <li>Totaalprijs voor {{$cart[$variant->id]}} stuks: &euro;{{$variant->product->vatIncPrice($cart[$variant->id])}}</li>
+                            <li>Totaalprijs voor {{$cart[$variant->id]}} stuks: &euro; {{$variant->product->vatIncPrice($cart[$variant->id])}}</li>
                         </ul>                
                     </div>
                 </div>                
             </div>   
         @endforeach
     </div>
-    Totaalprijs: &euro;{{$totalprice}}
-    <a href="{{ route('checkout') }}"><button>Afrekenen</button></a>
+    Totaalprijs: &euro; {{$totalprice}}
+    <a href="{{ route('checkout') }}"><button class="btn btn-primary">Afrekenen</button></a>
     @endisset 
 </div>
 @endsection
 
 @push('scripts')
-    @include('partials/scripts/addOne') 
+    @include('partials/scripts/addOne')     
     @include('partials/scripts/removeOne')     
+    @include('partials/scripts/removeAll')     
 @endpush

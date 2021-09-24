@@ -10076,6 +10076,10 @@ img {
     height: 200px;
   }
 }
+
+#flash {
+  display: none;
+  
 main {
   min-height: 80.4vh;
 }

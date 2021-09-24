@@ -31,12 +31,12 @@ class Cart extends Model
             //html for a non-empty cart
             $variants = session::get('cart');
             $html = '<h1>Winkelwagen</h1>';
-            $html .= '<a href="' . route("emptyCart") . '"><button>Winkelwagen leegmaken</button></a>';
-            $html .= ' <a href="' . route("checkout") . '"><button>Afrekenen</button></a>';
+            $html .= '<a href="' . route("emptyCart") . '"><button class="btn btn-primary">Winkelwagen leegmaken</button></a>';
+            $html .= ' <a href="' . route("checkout") . '"><button class="btn btn-primary">Afrekenen</button></a>';
             $html .= '<div class="row">';
             foreach ($variants as $variantId => $quantity) {
                 $variant = ProductVariant::find($variantId); 
-                $html .= '<div class="col-12 card">';
+                $html .= '<div class="col-12 card my-3 py-3">';
                 $html .= '<div class="row"><div class="col-8">';
                 $html .= $quantity . 'x Model ' . $variant->product->name . ':';
                 $html .= '<ul>';
@@ -44,18 +44,19 @@ class Cart extends Model
                 $html .= '<li>Gender: ' . $variant->gender->name . '</li>';
                 $html .= '<li>Maat: ' . $variant->size->name . '</li>';
                 $html .= '</ul>';
-                $html .= '<div> <button id="add-one" pv_id="' . $variantId . '">+</button> ';
-                $html .= '<button id="remove-one" pv_id="' . $variantId . '">-</button></div>';
+                $html .= '<div> <button id="add-one" pv_id="' . $variantId . '" class="btn btn-primary">+</button> ';
+                $html .= '<button id="remove-one" pv_id="' . $variantId . '" class="btn btn-primary">-</button> ';
+                $html .= '<button id="remove-all" pv_id="' . $variantId . '" class="btn btn-primary"><i class="far fa-trash-alt"></i></button></div>';
                 $html .= '</div><div class="col-4">';
                 $html .= '<ul>';
-                $html .= '<li>Prijs excl btw: &euro;' . $variant->product->price . '</li>';
+                $html .= '<li>Prijs excl btw: &euro; ' . $variant->product->price . '</li>';
                 $html .= '<li>BTW: ' . $variant->product->vatPercentage() . '%</li>';
-                $html .= '<li>Totaalprijs voor ' . $quantity . ' stuks: &euro;' . $variant->product->VatIncPrice($quantity) . '</li>';
+                $html .= '<li>Totaalprijs voor ' . $quantity . ' stuks: &euro; ' . $variant->product->VatIncPrice($quantity) . '</li>';
                 $html .= '</ul>';
                 $html .= '</div></div></div>';
             } 
-            $html .= '</div> Totaalprijs: &euro;' . self::totalPrice();
-            $html .= ' <a href="' . route("checkout") . '"><button>Afrekenen</button></a>';
+            $html .= '</div> Totaalprijs: &euro; ' . self::totalPrice();
+            $html .= ' <a href="' . route("checkout") . '"><button class="btn btn-primary">Afrekenen</button></a>';
         } else {
             //html for an empty cart
             $html = '<h1>Winkelwagen</h1>';
