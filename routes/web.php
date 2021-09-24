@@ -4,6 +4,7 @@
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use PHPUnit\Framework\MockObject\Rule\Parameters;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,9 @@ Route::post('/removeallfromcart', [\App\Http\Controllers\CartController::class, 
 Route::get('/emptycart', [\App\Http\Controllers\CartController::class, 'emptyCart'])->name('emptyCart');
 
 //resource routes
-Route::resource('/categories', \App\Http\Controllers\CategoryController::class);
-Route::resource('/products', \App\Http\Controllers\ProductController::class);
-Route::resource('/manufacturers', \App\Http\Controllers\ManufacturerController::class);
+Route::resource('categories', \App\Http\Controllers\CategoryController::class, ['parameters' => ['categories' => 'category:name']]);
+Route::resource('products', \App\Http\Controllers\ProductController::class, ['parameters' => ['products' => 'product:slug']]);
+Route::resource('manufacturers', \App\Http\Controllers\ManufacturerController::class, ['parameters' => ['manufacturers' => 'manufacturer:name']]);
 
 // checkout
 Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'store'])->name('checkout');

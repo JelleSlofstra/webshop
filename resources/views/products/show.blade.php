@@ -4,8 +4,8 @@
 <div class="container">
     <h1>{{$product->name}}</h1>
     <a href="/">Home</a> > 
-    <a href="{{route('categories.show', $product->category->id)}}">{{$product->category->name}}</a> >
-    <a href="{{route('products.show', $product->id)}}">{{$product->name}}</a>
+    <a href="{{route('categories.show', $product->category)}}">{{$product->category->name}}</a> >
+    <a href="{{route('products.show', $product)}}">{{$product->name}}</a>
 
     <div class="row justify-content-center">
 
