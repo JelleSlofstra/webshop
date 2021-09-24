@@ -42,14 +42,14 @@
         <!-- bestelopties -->
         <div class="col-md-3">
             <div class="container">
-                <h2 style="color:red">{{$product->price}} Euro</h2>
+                <h2 style="color:red">&euro; {{$product->price}}</h2>
                 <h2>Bestelopties</h2>
                 <!-- Kleuropties -->
-                <div>
+                <div class="mt-4">
                     <label for="colour">Kies een kleur</label>
                 </div>
                 <div>
-                    <select id="colour" name="colour">
+                    <select id="colour" name="colour" class="d-flex w-75 text-center">
                         @foreach ($colours as $colour)
                             <option value="{{$colour->id}}">{{$colour->name}}</option>
                         @endforeach
@@ -57,11 +57,11 @@
                 </div>
 
                 <!-- Maatopties -->
-                <div>
+                <div class="mt-4">
                     <label for="size">Kies een maat</label>
                 </div>
                 <div>
-                    <select id="size" name="size">
+                    <select id="size" name="size" class="d-flex w-75 text-center">
                         @foreach ($sizes as $size)
                             <option value="{{$size->id}}">{{$size->name}}</option>
                         @endforeach
@@ -69,19 +69,23 @@
                 </div>
                 
                 <!-- Genderopties -->
-                <div>
-                    <label for="gender">Kies een type</label>
+                <div class="mt-4">
+                    <label for="gender">Kies een model</label>
                 </div>
                 <div>
-                    <select id="gender" name="gender">
+                    <select id="gender" name="gender" class="d-flex w-75 text-center">
                         @foreach ($genders as $gender)
                             <option value="{{$gender->id}}">{{$gender->name}}</option>
                         @endforeach
                     </select>
                 </div>
 
-                <div class="add-to-cart">
-                    <button p_id="{{$product->id}}">In winkelwagen</button>
+                <div class="add-to-cart mt-4">
+                    <button p_id="{{$product->id}}" class="btn btn-primary">In winkelwagen</button>
+                </div>
+
+                <div id="flash" class="bg-primary text-white rounded text-center mt-3">
+                    Toegevoegd aan winkelwagen!
                 </div>
             </div>
         </div>         
@@ -90,5 +94,29 @@
 @endsection
 
 @push('scripts')
-    @include('partials/scripts/addThisToCart')  
+<script>
+    $(document).on('click', '.add-to-cart button', function(event){
+        let size_id = $('#size').val()
+        let colour_id = $('#colour').val()
+        let gender_id =  $('#gender').val()
+        let product_id = $(this).attr('p_id')
+
+        axios({
+            method: 'POST',
+            url:    '{{ route("addToCart") }}',
+            data: {
+                size_id: size_id,
+                colour_id: colour_id,
+                gender_id: gender_id,
+                product_id: product_id
+            }
+        }).then(function(response) {
+            if (response.data.success) {
+                $('#flash').fadeIn(1250).fadeOut(1250)
+            }
+        }).catch(function(error){
+
+        })
+    })
+</script> 
 @endpush

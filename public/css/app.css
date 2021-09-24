@@ -10080,3 +10080,6 @@ img {
     height: 200px;
   }
 }
+#flash {
+  display: none;
+}

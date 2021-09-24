@@ -1,11 +1,11 @@
-<div class="col-md-6">
+<div class="col-md-6 mb-5">
     <a href="{{ route('products.show', $product->id) }}">
         <div class="card product-card">
             <img src="../images/{{$product->productImages->first->image->image}}" class="card-img-top rounded product-images" alt="...">                                               
             
             
             <div class="card-body">
-                <h3 class="card-title">{{$product->name}} voor {{$product->price}} euro</h3> 
+                <h3 class="card-title">{{$product->name}} voor &euro; {{$product->price}}</h3> 
                 <ul>
                     <li>Merk: {{$product->manufacturer->name}}</li>
                     <li>Categorie: {{$product->category->name}}</li>
