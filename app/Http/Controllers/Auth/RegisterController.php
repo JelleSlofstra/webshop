@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\UserContact;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,11 +51,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username'      => ['required', 'string', 'max:255'],
-            'first_name'    => ['required', 'string', 'max:255'],
-            'last_name'     => ['required', 'string', 'max:255'],
-            'email'         => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'      => ['required', 'string', 'min:8', 'confirmed'],
+            'username'       => ['required', 'string', 'max:255', 'unique:users'],
+            'first_name'     => ['required', 'string', 'max:255'],
+            'last_name'      => ['required', 'string', 'max:255'],
+            'email'          => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'       => ['required', 'string', 'min:8', 'confirmed'],
+            'street'         => ['required', 'string', 'max:255'],
+            'postal_code'    => ['required', 'string', 'max:255'],
+            'phone'          => ['required', 'string', 'max:255'],
+            'bank_account'   => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -66,7 +71,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'username'      => $data['username'],
             'first_name'    => $data['first_name'],
             'last_name'     => $data['last_name'],
@@ -74,5 +79,16 @@ class RegisterController extends Controller
             'password'      => Hash::make($data['password']),
             'role_id'       => 2
         ]);
+
+        UserContact::create([
+            'user_id'       => $user->id,
+            'street'        => $data['street'],
+            'postal_code'   => $data['postal_code'],
+            'phone'         => $data['phone'],
+            'bank_account'  => $data['bank_account'],
+        ]);
+
+        return $user;
+
     }
 }
