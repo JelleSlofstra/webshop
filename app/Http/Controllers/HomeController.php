@@ -30,34 +30,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function show(Category $category)
+    public function show()
     {
         if (!is_null(request()->get('search'))) {
-            return view('products/results',  [
+            return view('products.results',  [
                 'manufacturers' => Manufacturer::all(),
                 'categories'=> Category::all(),
                 'products' => Product::latest()->filter(request(['search']))->get(),
             ]);
         }
         else {
-            return view('home/home', [
+            return view('home.home', [
                 'manufacturers' => Manufacturer::all(),
-                'categories'=> Category::all(),   
-                'category' => $category             
+                'categories'=> Category::all()            
             ]);
         }
-    }
-
-    public function ajax(Request $request)
-    {
-        return response()->json([
-            'success' => true,
-            'message' => 'dagobert'
-        ]);
-    }
-
-    Public function test()
-    {
-        return view('test');
     }
 }
