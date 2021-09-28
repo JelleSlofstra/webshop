@@ -51,7 +51,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products/show', [
+        return view('products.show', [
             'manufacturers' => Manufacturer::all(),
             'categories' => Category::all(),
             'genders'    => ProductGender::all(),

@@ -48,7 +48,53 @@
 @endsection
 
 @push('scripts')
-    @include('partials/scripts/addOne')     
-    @include('partials/scripts/removeOne')     
-    @include('partials/scripts/removeAll')     
+<script>
+    $(document).on('click', '#add-one', function(event){
+        axios({
+            method: 'POST',
+            url:    '{{ route("addToCart") }}',
+            data: {
+                productVariantId: $(this).attr('pv_id')
+            }
+        }).then(function(response) {
+            if (response.data.success) {
+                $('.cart-contents').html(response.data.html)
+            }
+        }).catch(function(error){
+
+        })
+    })
+
+    $(document).on('click', '#remove-all', function(event){
+        axios({
+            method: 'POST',
+            url:    '{{ route("removeAllFromCart") }}',
+            data:   {
+                    productVariantId: $(this).attr('pv_id')
+            }
+        }).then(function(response) {
+            if (response.data.success) {
+                $('.cart-contents').html(response.data.html)
+            }
+        }).catch(function(error){
+
+        })
+    })
+
+    $(document).on('click', '#remove-one', function(event){
+        axios({
+            method: 'POST',
+            url:    '{{ route("removeFromCart") }}',
+            data:   {
+                    productVariantId: $(this).attr('pv_id')
+            }
+        }).then(function(response) {
+            if (response.data.success) {
+                $('.cart-contents').html(response.data.html)
+            }
+        }).catch(function(error){
+
+        })
+    })
+</script>
 @endpush
