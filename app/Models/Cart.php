@@ -31,7 +31,7 @@ class Cart extends Model
             //html for a non-empty cart
             $variants = session::get('cart');
             $html = '<h1>Winkelwagen</h1>';
-            $html .= '<a href="' . route("emptyCart") . '"><button class="btn btn-primary">Winkelwagen leegmaken</button></a>';
+            $html .= '<button id="empty-cart" class="btn btn-primary update-cart">Winkelwagen leegmaken</button>';
             $html .= ' <a href="' . route("checkout") . '"><button class="btn btn-primary">Afrekenen</button></a>';
             $html .= '<div class="row">';
             foreach ($variants as $variantId => $quantity) {
@@ -44,9 +44,9 @@ class Cart extends Model
                 $html .= '<li>Gender: ' . $variant->gender->name . '</li>';
                 $html .= '<li>Maat: ' . $variant->size->name . '</li>';
                 $html .= '</ul>';
-                $html .= '<div> <button id="add-one" pv_id="' . $variantId . '" class="btn btn-primary">+</button> ';
-                $html .= '<button id="remove-one" pv_id="' . $variantId . '" class="btn btn-primary">-</button> ';
-                $html .= '<button id="remove-all" pv_id="' . $variantId . '" class="btn btn-primary"><i class="far fa-trash-alt"></i></button></div>';
+                $html .= '<div> <button id="add-one" pv_id="' . $variantId . '" class="btn btn-primary update-cart">+</button> ';
+                $html .= '<button id="remove-one" pv_id="' . $variantId . '" class="btn btn-primary update-cart">-</button> ';
+                $html .= '<button id="remove-all" pv_id="' . $variantId . '" class="btn btn-primary update-cart"><i class="far fa-trash-alt"></i></button></div>';
                 $html .= '</div><div class="col-4">';
                 $html .= '<ul>';
                 $html .= '<li>Prijs excl btw: &euro; ' . $variant->product->price . '</li>';
