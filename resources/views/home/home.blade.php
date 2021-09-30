@@ -12,9 +12,9 @@
                 @endif
     <div class="row justify-content-center">
        
-        <div class="col-md-9">
+        <div class="col-lg-9">
             <div class="row justify-content-center">
-                <div class="container-fluid w-100">
+                <div class="container-fluid w-100 d-none d-lg-block">
                     <img src="../images/lotofbikes.jpg" id="frontpage-image" alt="..." class="img-fluid w-100">
                     <h1 class="centered text-primary">S&J Fietsen</h1>
                 </div>
