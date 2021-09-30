@@ -4,12 +4,15 @@
 
 <div class="container">
                 @if (\Session::has('success'))
-                <div class="alert alert-success">
-                <ul>
-                <li>{!! \Session::get('success') !!}</li>
-                </ul>
+                <div class="alert alert-success" id="loginflash">
+                
+                {!! \Session::get('success') !!}
+                
                 </div>
                 @endif
+                <script>
+                    $('#loginflash').fadeIn('fast').delay(5000).fadeOut('fast');
+                </script>
     <div class="row justify-content-center">
        
         <div class="col-md-9">
