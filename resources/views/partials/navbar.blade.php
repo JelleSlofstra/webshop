@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
     <div class="container">
         <a class="navbar-logo" href="{{ url('/') }}">
             <img src="../images/logo.png" class="logo">
@@ -39,18 +39,6 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cart') }}" id="cart" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
-                </li>
-
-                <li class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
-                    <form method="GET" action='/#'>
-                        <input type="text" name="search" placeholder="Vind Iets" class="bg-transparent placeholder-black font-semibold text-sm">
-                    </form>
-                </li>
-
                 <!-- Authentication Links -->
                 @guest
                     @if (Route::has('login'))
@@ -83,6 +71,19 @@
                         </div>
                     </li>
                 @endguest
+
+                <li class="relative flex lg:inline-flex items-center rounded-xl mt-1">
+                    <form method="GET" action='/#'>
+                        <input type="text" name="search" placeholder="Zoek Iets" class="placeholder-black font-semibold text-sm">
+                    </form>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('cart') }}" id="cart" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-shopping-cart"></i>
+                        <text class="d-md-none">Winkelwagen</text>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
