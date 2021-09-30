@@ -8,7 +8,7 @@
     @endisset
 
     @isset($cart)
-    <a href="{{ route('emptyCart') }}"><button class="btn btn-primary">Winkelwagen leegmaken</button></a>
+    <button id="empty-cart" class="btn btn-primary update-cart">Winkelwagen leegmaken</button>
     <a href="{{ route('checkout') }}"><button class="btn btn-primary">Afrekenen</button></a>
 
     
@@ -25,9 +25,9 @@
                         </ul>
 
                         <div>
-                            <button id="add-one" pv_id="{{$variant->id}}" class="btn btn-primary">+</button>
-                            <button id="remove-one" pv_id="{{$variant->id}}" class="btn btn-primary">-</button>
-                            <button id="remove-all" pv_id="{{$variant->id}}" class="btn btn-primary"><i class="far fa-trash-alt"></i></button>
+                            <button id="add-one" pv_id="{{$variant->id}}" class="btn btn-primary update-cart">+</button>
+                            <button id="remove-one" pv_id="{{$variant->id}}" class="btn btn-primary update-cart">-</button>
+                            <button id="remove-all" pv_id="{{$variant->id}}" class="btn btn-primary update-cart"><i class="far fa-trash-alt"></i></button>
                         </div>
                     </div>
                     <div class="col-4">
@@ -49,11 +49,12 @@
 
 @push('scripts')
 <script>
-    $(document).on('click', '#add-one', function(event){
+    $(document).on('click', '.update-cart', function(event){
         axios({
             method: 'POST',
-            url:    '{{ route("addToCart") }}',
+            url:    '{{ route("updateCart") }}',
             data: {
+                method: $(this).attr('id'),
                 productVariantId: $(this).attr('pv_id')
             }
         }).then(function(response) {
@@ -63,38 +64,6 @@
         }).catch(function(error){
 
         })
-    })
-
-    $(document).on('click', '#remove-all', function(event){
-        axios({
-            method: 'POST',
-            url:    '{{ route("removeAllFromCart") }}',
-            data:   {
-                    productVariantId: $(this).attr('pv_id')
-            }
-        }).then(function(response) {
-            if (response.data.success) {
-                $('.cart-contents').html(response.data.html)
-            }
-        }).catch(function(error){
-
-        })
-    })
-
-    $(document).on('click', '#remove-one', function(event){
-        axios({
-            method: 'POST',
-            url:    '{{ route("removeFromCart") }}',
-            data:   {
-                    productVariantId: $(this).attr('pv_id')
-            }
-        }).then(function(response) {
-            if (response.data.success) {
-                $('.cart-contents').html(response.data.html)
-            }
-        }).catch(function(error){
-
-        })
-    })
+    })    
 </script>
 @endpush

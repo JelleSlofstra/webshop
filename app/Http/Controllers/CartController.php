@@ -41,72 +41,59 @@ class CartController extends Controller
         }        
     }
 
-    public function addToCart(Request $request)
+    public function updateCart(Request $request)
     {
         try {
-            //get the productvariant
-            if(!$request->productVariantId) {
-                //if the session doesnt contain a productVariantId
-                //then use the product_id, product_size_id, product_gender_id, product_colour_id
-                $productVariant = ProductVariant::findVariant($request);
-            } else {
-                //if the session does contain a productVariantId
-                $productVariant = ProductVariant::find($request->productVariantId); 
-            }
-
-            //get the cart contents from the session, or 'start' a new empty cart 
-            if (session::exists('cart')) {
-                $session = session::get('cart');
-            } else {
+            if($request->method === 'empty-cart') 
+            {
                 $session = [];
-            }
-
-            //add one of this variant to $session
-            if(array_key_exists($productVariant->id, $session)){
-                $session[$productVariant->id] += 1;
             } else {
-                $session[$productVariant->id] = 1;
+                //get the productvariant
+                if(!$request->productVariantId) {
+                    //if the session doesnt contain a productVariantId
+                    //then use the product_id, product_size_id, product_gender_id, product_colour_id
+                    $productVariant = ProductVariant::findVariant($request);
+                } else {
+                    //if the session does contain a productVariantId
+                    $productVariant = ProductVariant::find($request->productVariantId); 
+                }
+
+                //get the cart contents from the session, or 'start' a new empty cart 
+                if (session::exists('cart')) {
+                    $session = session::get('cart');
+                } else {
+                    $session = [];
+                }
+                
+                //update the $session-array
+                if($request->method === 'add-one') 
+                {
+                    if(array_key_exists($productVariant->id, $session)){
+                        $session[$productVariant->id] += 1;
+                    } else {
+                        $session[$productVariant->id] = 1;
+                    }
+                } 
+                elseif ($request->method === 'remove-one')
+                {
+                    if ($session[$productVariant->id] === 1) {
+                        unset($session[$productVariant->id]);
+                    } else {
+                        $session[$productVariant->id] -= 1;
+                    }   
+                }
+                elseif ($request->method === 'remove-all')
+                {
+                    unset($session[$productVariant->id]);                
+                }
             }
 
-            //change the 'cart' in the session from $session
-            session::put('cart', $session);
-
-            // build the html for the cart            
-            return response()->json([
-                'success'   => true,
-                'html'      => Cart::buildHtml()
-            ]);
-        } 
-        catch(Exception $e) {
-            return response()->json([
-                'success'   => false,
-                'message'   => $e->getMessage(),
-            ]);
-        }        
-    }
-
-    public function removeFromCart(Request $request)
-    {
-        try {
-            //get the productvariant
-            $productVariant = ProductVariant::find($request->productVariantId);
-
-            //get the cart contents from the session
-            $session = session::get('cart');
-
-            //remove one of this variant from the $session
-            if ($session[$productVariant->id] === 1) {
-                unset($session[$productVariant->id]);
-            } else {
-                $session[$productVariant->id] -= 1;
-            }
-
-            //change the 'cart' in the session from $session
+            //change the 'cart' in the session from $session-array
             if (empty($session)) {
                 session::remove('cart');
             } else {
                 session::put('cart', $session);
-            }
+            } 
 
             return response()->json([
                 'success'   => true,
@@ -119,44 +106,6 @@ class CartController extends Controller
                 'message'   => $e->getMessage(),
             ]);
         }
-    }
-
-    public function removeAllFromCart(Request $request)
-    {
-        try {
-            //get the productvariant
-            $productVariant = ProductVariant::find($request->productVariantId);
-
-            //get the cart contents from the session
-            $session = session::get('cart');
-
-            //remove this variant from the $session
-            unset($session[$productVariant->id]);            
-
-            //change the 'cart' in the session from $session
-            if (empty($session)) {
-                session::remove('cart');
-            } else {
-                session::put('cart', $session);
-            }
-
-            return response()->json([
-                'success'   => true,
-                'html'      => Cart::buildHtml()
-            ]);
-        }
-        catch(Exception $e) {
-            return response()->json([
-                'success'   => false,
-                'message'   => $e->getMessage(),
-            ]);
-        }
-    }
-
-    public static function emptyCart()
-    {        
-        session::remove('cart');
-        return redirect("/cart");
     }
 
     /**

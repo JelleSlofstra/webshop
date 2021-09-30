@@ -33,10 +33,11 @@ class HomeController extends Controller
     public function show()
     {
         if (!is_null(request()->get('search'))) {
-            return view('products.results',  [
+            return view('products.index',  [
                 'manufacturers' => Manufacturer::all(),
-                'categories'=> Category::all(),
-                'products' => Product::latest()->filter(request(['search']))->get(),
+                'categories'    => Category::all(),
+                'products'      => Product::latest()->filter(request(['search']))->get(),
+                'search'        => request('search') 
             ]);
         }
         else {

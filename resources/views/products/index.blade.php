@@ -2,10 +2,32 @@
 
 @section('content')
     <div class="container">
-        <h1>{{$category->name}}</h1>
-        <a href="/">Home</a> > 
-        <a href="{{route('categories.show', $category)}}">{{$category->name}}</a>
-        @include('partials/productlist')
+        <!-- titles -->
+        @isset($manufacturer)
+            <h1>Alles van het merk {{$manufacturer->name}}</h1>
+        @endisset
+        @isset($category)
+            <h1>Alles in de categorie {{$category->name}}</h1>
+        @endisset
+        @isset($search)
+            <h1>Zoekresultaten voor '{{$search}}'</h1>
+        @endisset
+
+        <div class="row justify-content-center">    
+            <!-- filters -->
+            <div class="col-lg-2">       
+                @include('products.partials.filters')
+            </div> 
+
+            <!-- productlijst -->
+            <div class="col-lg-10">
+                <div class="row justify-content-center">
+                    @foreach ($products as $product)
+                        @include('products.partials.productcard')
+                    @endforeach
+                </div>
+            </div>           
+        </div>
     </div>
 @endsection
 
@@ -75,6 +97,10 @@
                     $(this).hide()
                 }
             })
+        })
+
+        $('#toggle-filters').click(function(event){
+            $('#filter-container').toggleClass('d-none d-block')
         })
     </script>
 @endpush

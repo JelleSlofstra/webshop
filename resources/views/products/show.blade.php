@@ -103,8 +103,9 @@
 
         axios({
             method: 'POST',
-            url:    '{{ route("addToCart") }}',
+            url:    '{{ route("updateCart") }}',
             data: {
+                method: 'add-one',
                 size_id: size_id,
                 colour_id: colour_id,
                 gender_id: gender_id,

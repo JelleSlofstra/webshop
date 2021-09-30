@@ -47,7 +47,7 @@ class ManufacturerController extends Controller
      */
     public function show(Manufacturer $manufacturer)
     {
-        return view('manufacturers.show', [
+        return view('products.index', [
             'categories'    => Category::all(),
             'manufacturers' => Manufacturer::all(),
             'manufacturer'  => $manufacturer,

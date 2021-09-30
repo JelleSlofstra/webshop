@@ -19,12 +19,7 @@ Auth::routes();
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'show'])->name('root');
-
-//cart functionality
-Route::post('/addtocart', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('addToCart');
-Route::post('/removefromcart', [\App\Http\Controllers\CartController::class, 'removeFromCart'])->name('removeFromCart');
-Route::post('/removeallfromcart', [\App\Http\Controllers\CartController::class, 'removeAllFromCart'])->name('removeAllFromCart');
-Route::get('/emptycart', [\App\Http\Controllers\CartController::class, 'emptyCart'])->name('emptyCart');
+Route::post('/updatecart', [\App\Http\Controllers\CartController::class, 'updateCart'])->name('updateCart');
 
 //resource routes
 Route::resource('categories', \App\Http\Controllers\CategoryController::class, ['parameters' => ['categories' => 'category:name']]);
