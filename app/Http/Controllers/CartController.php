@@ -138,6 +138,12 @@ class CartController extends Controller
                 'amount' => $amount,
             ]);
         }
+        return view('checkout.home', [
+            'categories'    => Category::all(),
+            'manufacturers' => Manufacturer::all(),        
+            'cart' => $cart,
+            
+        ]);
     }
 
     /**

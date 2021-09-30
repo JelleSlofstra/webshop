@@ -14,6 +14,11 @@ class Cart extends Model
     protected $fillable = [
         'user_id'
     ];
+
+    public function cartContents()
+    {
+        return $this->hasMany(CartContent::class);
+    }
     public static function totalPrice()
     {
         $bill = 0;
