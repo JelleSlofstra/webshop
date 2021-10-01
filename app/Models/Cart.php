@@ -38,27 +38,28 @@ class Cart extends Model
             $html = '<h1>Winkelwagen</h1>';
             $html .= '<button id="empty-cart" class="btn btn-primary update-cart">Winkelwagen leegmaken</button>';
             $html .= ' <a href="' . route("checkout") . '"><button class="btn btn-primary">Afrekenen</button></a>';
-            $html .= '<div class="row">';
+            $html .= '<div class="row text-center">';
             foreach ($variants as $variantId => $quantity) {
-                $variant = ProductVariant::find($variantId); 
-                $html .= '<div class="col-12 card my-3 py-3">';
-                $html .= '<div class="row"><div class="col-8">';
-                $html .= $quantity . 'x Model ' . $variant->product->name . ':';
-                $html .= '<ul>';
-                $html .= '<li>Kleur: ' . $variant->colour->name . '</li>';
-                $html .= '<li>Gender: ' . $variant->gender->name . '</li>';
-                $html .= '<li>Maat: ' . $variant->size->name . '</li>';
-                $html .= '</ul>';
-                $html .= '<div> <button id="add-one" pv_id="' . $variantId . '" class="btn btn-primary update-cart">+</button> ';
-                $html .= '<button id="remove-one" pv_id="' . $variantId . '" class="btn btn-primary update-cart">-</button> ';
-                $html .= '<button id="remove-all" pv_id="' . $variantId . '" class="btn btn-primary update-cart"><i class="far fa-trash-alt"></i></button></div>';
-                $html .= '</div><div class="col-4">';
-                $html .= '<ul>';
-                $html .= '<li>Prijs excl btw: &euro; ' . $variant->product->price . '</li>';
-                $html .= '<li>BTW: ' . $variant->product->vatPercentage() . '%</li>';
-                $html .= '<li>Totaalprijs voor ' . $quantity . ' stuks: &euro; ' . $variant->product->VatIncPrice($quantity) . '</li>';
-                $html .= '</ul>';
-                $html .= '</div></div></div>';
+                $variant = ProductVariant::find($variantId);
+                $html .= '<div class="col-12 card my-3 p-4"><div class="row">';
+                //plaatje en buttons 
+                $html .= '<div class="col-lg-3 col-md-4 my-auto">';
+                $html .= '<img src="../images/' . $variant->product->productImages->first->image->image . '" alt="" class="cart-img d-block mx-auto my-2 rounded">';
+                $html .= '<span class="d-block"> <button id="add-one" pv_id="' . $variantId . '" class="d-inline btn btn-primary update-cart">+</button> ';
+                $html .= '<button id="remove-one" pv_id="' . $variantId . '" class="d-inline btn btn-primary update-cart">-</button> ';
+                $html .= '<button id="remove-all" pv_id="' . $variantId . '" class="d-inline btn btn-primary update-cart"><i class="far fa-trash-alt"></i></button></span></div>';
+                //model
+                $html .= '<div class="col-md-4 col-lg-6 my-auto"><div class="row">';
+                $html .= '<div class="col-lg-6 col-md-12 my-auto"><div class="my-3"><strong>Model: </strong></div>';
+                $html .= '<div>' .$quantity . 'x ' . $variant->product->name . '</div></div>';
+                //opties
+                $html .= '<div class="col-lg-6 col-md-12 my-auto"><div class="my-3"><strong>Opties: </strong></div>';
+                $html .= '<div>'.$variant->size->name.', '.$variant->colour->name.', '.$variant->gender->name.'</div></div>';
+                $html .= '</div></div>';
+                //prijzen
+                $html .= '<div class="col-lg-3 col-md-4 my-auto"><div class="my-3"><strong> Prijs excl btw ('.$variant->product->vatPercentage().')%:</strong> &euro; '.$variant->product->price.'</div>';
+                $html .= '<div><strong>Totaalprijs voor ' . $quantity . ' stuk(s):</strong> &euro; ' . $variant->product->VatIncPrice($quantity) .'</div></div>';
+                $html .= '</div></div>';
             } 
             $html .= '</div> Totaalprijs: &euro; ' . self::totalPrice();
             $html .= ' <a href="' . route("checkout") . '"><button class="btn btn-primary">Afrekenen</button></a>';
