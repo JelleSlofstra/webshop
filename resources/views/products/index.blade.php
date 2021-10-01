@@ -21,7 +21,7 @@
 
             <!-- productlijst -->
             <div class="col-lg-10">
-                <div class="row justify-content-center">
+                <div class="row justify-content-center card-deck">
                     @foreach ($products as $product)
                         @include('products.partials.productcard')
                     @endforeach
