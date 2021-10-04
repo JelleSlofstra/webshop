@@ -28,6 +28,7 @@ Route::resource('manufacturers', \App\Http\Controllers\ManufacturerController::c
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::post('/updatecart', [\App\Http\Controllers\CartController::class, 'updateCart'])->name('updateCart');
 Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'store'])->name('checkout');
+Route::get('/payment', [\App\Http\Controllers\CartController::class, 'payment'])->name('payment');
 
 //order overview
 Route::get('orders', [\App\Http\Controllers\CartController::class, 'orderIndex'])->name('orderIndex');
