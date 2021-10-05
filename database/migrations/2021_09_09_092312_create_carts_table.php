@@ -18,7 +18,10 @@ class CreateCartsTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
+           
+          
         });
+        // voor elke cart de totale prijs (elk item, quant x prijs)vanuit cart_contents
     }
 
     /**
