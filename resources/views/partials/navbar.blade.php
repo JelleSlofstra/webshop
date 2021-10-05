@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary shadow-sm">
     <div class="container">
         <a class="navbar-logo" href="{{ url('/') }}">
             <img src="../images/logo.png" class="logo">
@@ -17,7 +17,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="categoryDropdown">
                         @foreach ($categories as $navcat)
-                            <a class="dropdown-item" href="{{ route('categories.show', $navcat->id) }}">{{$navcat->name}}</a>
+                            <a class="dropdown-item" href="{{ route('categories.show', $navcat) }}">{{$navcat->name}}</a>
                         @endforeach
                     </div>
                 </li>
@@ -30,7 +30,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="manufacturerDropdown">
                         @foreach ($manufacturers as $navmanu)
-                            <a class="dropdown-item" href="{{ route('manufacturers.show', $navmanu->id) }}">{{$navmanu->name}}</a>
+                            <a class="dropdown-item" href="{{ route('manufacturers.show', $navmanu) }}">{{$navmanu->name}}</a>
                         @endforeach
                     </div>
                 </li>
@@ -39,50 +39,49 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
+                <li class="relative flex lg:inline-flex items-center rounded-xl mt-1">
+                    <form method="GET" action='/#'>
+                        <input type="text" name="search" placeholder="Zoek Iets" class="placeholder-black font-semibold text-sm">
+                    </form>
+                </li>
+                <!-- Authentication Links -->                
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <i class="fas fa-user"></i>
+                        <text class="d-md-none">Gebruiker</text>
+                    </a> 
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">            
+                        @guest                    
+                        @if (Route::has('login'))
+                            <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        @endif
+
+                        @if (Route::has('register'))
+                            <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        @endif  
+                        @else  
+                        <a class="dropdown-item" href="{{ route('orderIndex') }}">
+                            Order-overzicht
+                        </a>                   
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>                        
+                    </div>
+                </li>                    
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form> 
+                @endguest               
+
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('cart') }}" id="cart" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-shopping-cart"></i>
+                        <text class="d-md-none">Winkelwagen</text>
                     </a>
                 </li>
-
-                <li class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
-                    <form method="GET" action='/#'>
-                        <input type="text" name="search" placeholder="Vind Iets" class="bg-transparent placeholder-black font-semibold text-sm">
-                    </form>
-                </li>
-
-                <!-- Authentication Links -->
-                @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                    @endif
-
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                @endguest
             </ul>
         </div>
     </div>

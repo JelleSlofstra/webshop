@@ -1,7 +1,5 @@
 <?php
 
-
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,19 +17,21 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'show'])->name('root');
 
-//cart functionality
-Route::post('/addtocart', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('addToCart');
-Route::post('/removefromcart', [\App\Http\Controllers\CartController::class, 'removeFromCart'])->name('removeFromCart');
-Route::post('/removeallfromcart', [\App\Http\Controllers\CartController::class, 'removeAllFromCart'])->name('removeAllFromCart');
-Route::get('/emptycart', [\App\Http\Controllers\CartController::class, 'emptyCart'])->name('emptyCart');
-
 //resource routes
-Route::resource('/categories', \App\Http\Controllers\CategoryController::class);
-Route::resource('/products', \App\Http\Controllers\ProductController::class);
-Route::resource('/manufacturers', \App\Http\Controllers\ManufacturerController::class);
+Route::resource('categories', \App\Http\Controllers\CategoryController::class, ['parameters' => ['categories' => 'category:name']]);
+Route::resource('products', \App\Http\Controllers\ProductController::class, ['parameters' => ['products' => 'product:slug']]);
+Route::resource('manufacturers', \App\Http\Controllers\ManufacturerController::class, ['parameters' => ['manufacturers' => 'manufacturer:name']]);
 
-// checkout
+//cart functionality
+Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
+Route::post('/updatecart', [\App\Http\Controllers\CartController::class, 'updateCart'])->name('updateCart');
 Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'store'])->name('checkout');
+Route::get('/payment', [\App\Http\Controllers\CartController::class, 'payment'])->name('payment')->middleware('auth');
+
+//order overview
+
+Route::get('orders', [\App\Http\Controllers\CartController::class, 'orderIndex'])->name('orderIndex');
+Route::get('orders/{cart}', [\App\Http\Controllers\CartController::class, 'show'])->name('showOrder');
+

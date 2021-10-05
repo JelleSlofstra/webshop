@@ -1,7 +1,7 @@
-<div class="col-md-6 mb-5">
-    <a href="{{ route('products.show', $product->id) }}">
+<div class="col-md-6 my-3 product-container" cat="{{ $product->category->id }}" manu="{{ $product->manufacturer->id }}" price="{{ $product->price }}">
+    <a href="{{ route('products.show', $product) }}">
         <div class="card product-card">
-            <img src="../images/{{$product->productImages->first->image->image}}" class="card-img-top rounded product-images" alt="...">                                               
+            <img src="../images/{{$product->productImages->first->image->image}}" class="rounded card-img-top" alt="...">                                               
             
             
             <div class="card-body">
