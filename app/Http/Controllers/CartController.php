@@ -7,8 +7,10 @@ use App\Models\CartContent;
 use App\Models\ProductVariant;
 use App\Models\Category;
 use App\Models\Manufacturer;
+use Error;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -47,8 +49,14 @@ class CartController extends Controller
         ]);
     }
 
+    public function orderIndex()
+    {
+        return view('orders.index', [
+            'categories'    => Category::all(),
+            'manufacturers' => Manufacturer::all()
+        ]);
+    }
 
-    
     public function updateCart(Request $request)
     {
         try {
@@ -162,6 +170,7 @@ class CartController extends Controller
             'manufacturers' => Manufacturer::all(),        
             'cart' => $cart,
             'totalprice'    => Cart::totalOrderPrice($cart)            
+
         ]);
     }
 
@@ -173,7 +182,21 @@ class CartController extends Controller
      */
     public function show(Cart $cart)
     {
-        //
+        if (Auth::user()->id === $cart->user_id)
+        {
+            return view('checkout.home', [
+                'categories'    => Category::all(),
+                'manufacturers' => Manufacturer::all(),        
+                'cart' => $cart,            
+            ]);
+        } else 
+        {
+            return view('orders.index', [
+                'categories'    => Category::all(),
+                'manufacturers' => Manufacturer::all()
+            ]);
+        }
+        
     }
 
     /**

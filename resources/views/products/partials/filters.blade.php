@@ -4,7 +4,8 @@
 
     <div class="row">
         <!-- merkenfilter -->
-        <div class="col-md-4 col-lg-12 my-3">
+        @empty($manufacturer)
+        <div class="col-md col-lg-12 my-3">
             <form id="manufilter">
                 <h4>Merken</h4>
                 <div>
@@ -19,10 +20,11 @@
                 @endforeach  
             </form>
         </div>
-            
+        @endempty
 
         <!-- categorienfilter -->
-        <div class="col-md-4 col-lg-12 my-3">
+        @empty($category)
+        <div class="col-md col-lg-12 my-3">
             <form id="catfilter">
                 <h4>Categorieen</h4>
                 <div>
@@ -37,9 +39,10 @@
                 @endforeach 
             </form>
         </div>
+        @endempty
 
         <!-- prijzenfilter -->
-        <div class="col-md-4 col-lg-12 my-3">
+        <div class="col-md col-lg-12 my-3">
             <form id="pricefilter">
                 <h4>Prijzen</h4>
                 <div>
