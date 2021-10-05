@@ -35,7 +35,13 @@
     <script>
         $('.filter').on('change', function(event){
             manufilter = $('input[name=manufacturer]:checked', '#manufilter').val()
+            if(!manufilter) {
+                manufilter = 'no-manufilter'
+            }
             catfilter = $('input[name=category]:checked', '#catfilter').val()
+            if(!catfilter) {
+                catfilter = 'no-catfilter'
+            }
             pricefilter = $('input[name=price]:checked', '#pricefilter').val()
 
             switch (pricefilter) {
