@@ -5,7 +5,7 @@
 
  
 <div id="header_order">
-<h1> Deze producten heeft u zojuist besteld </h1>
+<h1> Bestelde Producten </h1>
 </div>
     
     @foreach ($cart->cartcontents as $cartProduct)
@@ -69,7 +69,7 @@
         <div class="order_total">
                         <div class="order_total_content text-md-right">
                             <div class="order_total_title">Order Total:</div>
-                            <div class="order_total_amount"><div>&euro;{{$totalprice}}</div></div>
+                            <div class="order_total_amount"><div>&euro;{{$cart->totalprice()}}</div></div>
                         </div>
                     </div>
     </div>

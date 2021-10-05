@@ -60,7 +60,7 @@
         @endforeach
     </div>
     Totaalprijs: &euro; {{$totalprice}}
-    <a href="{{ route('checkout') }}"><button class="btn btn-primary">Afrekenen</button></a>
+    <a href="{{ route('payment') }}"><button class="btn btn-primary">Afrekenen</button></a>
     @endisset 
 </div>
 @endsection

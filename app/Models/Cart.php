@@ -30,6 +30,16 @@ class Cart extends Model
         return number_format($bill,2);
     }
 
+    public static function totalOrderPrice(Cart $cart)
+    {
+        $bill = 0;
+        foreach ($cart->cartContents as $cartContent)
+        {
+            $bill += $cartContent->amount * $cartContent->price * $cartContent->vat; 
+        }
+        return number_format($bill,2);
+    }
+
     public static function buildHtml()
     {
         if (session::exists('cart')) {

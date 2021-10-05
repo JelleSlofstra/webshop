@@ -18,6 +18,8 @@ class CreateCartContentsTable extends Migration
             $table->foreignId('cart_id')->references('id')->on('carts');
             $table->foreignId('product_variant_id')->references('id')->on('product_variants');
             $table->integer('amount');
+            $table->decimal('price');
+            $table->decimal('vat');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

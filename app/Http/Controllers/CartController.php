@@ -42,6 +42,12 @@ class CartController extends Controller
             ]);
         }        
     }
+    public function payment()
+    {
+        return view('payment/home', [
+            'totalprice' => cart::totalPrice()
+        ]);
+    }
 
     public function orderIndex()
     {
@@ -66,6 +72,7 @@ class CartController extends Controller
                 } else {
                     //if the session does contain a productVariantId
                     $productVariant = ProductVariant::find($request->productVariantId); 
+                    
                 }
 
                 //get the cart contents from the session, or 'start' a new empty cart 
@@ -139,19 +146,31 @@ class CartController extends Controller
         $cart_contents = session::get('cart');
 
         $cart = cart::create(['user_id'=> 1]);
+
+        
         
         foreach ($cart_contents as $variant_id=>$amount)
         {
+            $variant = ProductVariant::findOrFail($variant_id);
+            
             CartContent::create([
                 'cart_id' => $cart->id,    
                 'product_variant_id' => $variant_id,
                 'amount' => $amount,
+                'price' => $variant->product->price,
+                'vat'   => $variant->product->vat,
+                
             ]);
         }
+       
+          
+        
         return view('checkout.home', [
             'categories'    => Category::all(),
             'manufacturers' => Manufacturer::all(),        
-            'cart' => $cart,            
+            'cart' => $cart,
+            'totalprice'    => Cart::totalOrderPrice($cart)            
+
         ]);
     }
 

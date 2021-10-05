@@ -11,7 +11,7 @@ class CartContent extends Model
     use HasFactory;
 
     protected $table = 'cart_contents';
-    protected $fillable = ['cart_id', 'amount', 'product_variant_id'];
+    protected $fillable = ['cart_id', 'amount', 'product_variant_id','price', 'vat'];
 
     public function productVariant()
     {
