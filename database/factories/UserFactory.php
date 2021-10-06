@@ -33,16 +33,6 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
-    //         $table->id();
-    //         $table->string('first_name');
-    //         $table->string('last_name');
-    //         $table->string('username')->unique();
-    //         $table->string('email')->unique();
-    //         $table->timestamp('email_verified_at')->nullable();
-    //         $table->string('password');
-    //         $table->rememberToken();
-    //         $table->timestamps();
-    //         $table->foreignId('role_id')->references('id')->on('roles');
 
     /**
      * Indicate that the model's email address should be unverified.

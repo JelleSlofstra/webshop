@@ -28,7 +28,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Esprix',
             'slug' => 'esprix',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Robuuste allrounder waarmee je echt alles kan vervoeren. Perfect voor moeders én vaders!',
             'price' => 550,
             'vat' => 1.21,
             'category_id' => 1,
@@ -38,7 +38,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'PureNL',
             'slug' => 'purenl',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Sportieve allround stadsfiets waarmee je gezien mag worden',
             'price' => 600,
             'vat' => 1.21,
             'category_id' => 1,
@@ -48,7 +48,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Urban',
             'slug' => 'urban',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Dé next generation transportfiets met 3 versnellingen, kan wel tegen een stootje',
             'price' => 800,
             'vat' => 1.21,
             'category_id' => 1,
@@ -58,7 +58,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Finesse',
             'slug' => 'finesse',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Robuuste allround transportfiets die wel tegen een stootje kan',
             'price' => 720,
             'vat' => 1.21,
             'category_id' => 1,
@@ -68,7 +68,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Mark IV',
             'slug' => 'mark4',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Een ware allrounder met superstabiel frame! De fiets van het jaar 2020!',
             'price' => 600,
             'vat' => 1.21,
             'category_id' => 1,
@@ -79,7 +79,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Y-Caliber 3',
             'slug' => 'ycaliber',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Het lichtgewicht aluminium frame heeft niet alleen een uitgebalanceerde uitrusting die het comfort biedt dat nodig is voor in het begin, maar siert zichzelf ook met een sportief, fris en tegelijkertijd tijdloos design.',
             'price' => 1000,
             'vat' => 1.21,
             'category_id' => 2,
@@ -89,7 +89,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Ironhead',
             'slug' => 'ironhead',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Een zeer goede fiets voor een schappelijke prijs. De afmontage is goed en de 1x12 aandrijflijn laat niets te wensen over.',
             'price' => 900,
             'vat' => 1.21,
             'category_id' => 2,
@@ -99,7 +99,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Klauw 2',
             'slug' => 'klauw',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Klimt als een XC-bike en daalt als een downhiller dankzij de afstelbare geometrie en suspensiekinematica.',
             'price' => 1100,
             'vat' => 1.21,
             'category_id' => 2,
@@ -109,7 +109,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Merlijn 3',
             'slug' => 'merlijn',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Met een gebalanceerde geometrie en zorgvuldig samengestelde afmontage is de Merlijn een uitstekende introductie in de mountainbikesport.',
             'price' => 1200,
             'vat' => 1.21,
             'category_id' => 2,
@@ -119,7 +119,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Schaal 2021',
             'slug' => 'schaal',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Een droomfiets in de puurste zin van het woord. Met zijn premium carbon onderdelen en intelligente, draadloos verbonden en via de app configureerbare onderdelen.',
             'price' => 1050,
             'vat' => 1.21,
             'category_id' => 2,
@@ -129,7 +129,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'ProCaliber 3.91',
             'slug' => 'procaliber',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Een moderne mountainbike met een uitstekende afmontage. De Procaliber biedt alles wat je nodig hebt om off-road de mooiste plekjes te gaan ontdekken.',
             'price' => 1100,
             'vat' => 1.21,
             'category_id' => 2,
@@ -140,7 +140,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Latina SPB',
             'slug' => 'latina',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'De Latina SPB is een racefiets van topkwaliteit. Met zijn lichte en strak uitziende frame en hoogwaardige Shimano onderdelen is deze racefiets de beste keus',
             'price' => 1500,
             'vat' => 1.21,
             'category_id' => 3,
@@ -150,7 +150,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Axiaal Quick',
             'slug' => 'axiaalq',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Deze lichte aluminium racefiets met carbon voorvork en met mechanische schijfremmen is perfect als je een leuke allround racefiets zoekt waar je lang mee vooruit kan.',
             'price' => 1450,
             'vat' => 1.21,
             'category_id' => 3,
@@ -160,7 +160,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Zwever',
             'slug' => 'zwever',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Voordelig geprijsde crosshybride met 21 versnellingen. verende voorvork en mechanische schijfremmen, een ideale fiets voor de beginnende fietser.',
             'price' => 1300,
             'vat' => 1.21,
             'category_id' => 3,
@@ -170,7 +170,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Axiaal Slow',
             'slug' => 'axiaals',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'We hebben deze racefiets ontwikkeld en getest voor regelmatige ritten. De fiets voelt zo comfortabel dat je steeds vaker en verder wilt rijden.',
             'price' => 2000,
             'vat' => 1.21,
             'category_id' => 3,
@@ -262,7 +262,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Nippon',
             'slug' => 'nippon',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Met de Nippon haal je een trendy transportfiets voor kinderen in huis die je voor alle soort ritten kan gebruiken.',
             'price' => 100,
             'vat' => 1.21,
             'category_id' => 5,
@@ -272,7 +272,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Zhongguo',
             'slug' => 'zhongguo',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Perfecte kinderfiets voor stoere meiden, drie versnellingen en een dichte kettingkast die ervoor zorgt dat je geen vieze kleren krijgt',
             'price' => 110,
             'vat' => 1.21,
             'category_id' => 5,
@@ -282,7 +282,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Siam',
             'slug' => 'siam',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Batterij verlichting voor- en achter, drie versnelling, terugtrap- en handrem',
             'price' => 120,
             'vat' => 1.21,
             'category_id' => 5,
@@ -292,7 +292,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Myanmar',
             'slug' => 'myanmar',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'De Batavus Booster 24 inch is voor de jongens die aan het eind van de basisschool zijn. Door het stoere en gebogen frame is de opstap hoger, wat de fiets een gave look geeft.',
             'price' => 60,
             'vat' => 1.21,
             'category_id' => 5,
@@ -302,7 +302,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Indonesia',
             'slug' => 'indonesia',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Deze stoere fiets bevat twee handremmen en een terugtraprem om altijd veilig tot stilstand te komen.',
             'price' => 75,
             'vat' => 1.21,
             'category_id' => 5,
@@ -312,7 +312,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Malaysia',
             'slug' => 'malaysia',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Met de Malaysia voel je je een echte ster! Deze super stevige kinderfiets is beschikbaar in 24 inch en in 26 inch en is voorzien van drie versnellingen! ',
             'price' => 90,
             'vat' => 1.21,
             'category_id' => 5,
