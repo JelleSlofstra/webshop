@@ -23,15 +23,14 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'show'])->name('ro
 Route::resource('categories', \App\Http\Controllers\CategoryController::class, ['parameters' => ['categories' => 'category:name']]);
 Route::resource('products', \App\Http\Controllers\ProductController::class, ['parameters' => ['products' => 'product:slug']]);
 Route::resource('manufacturers', \App\Http\Controllers\ManufacturerController::class, ['parameters' => ['manufacturers' => 'manufacturer:name']]);
+Route::resource('orders', \App\Http\Controllers\OrderController::class);
 
 //cart functionality
-Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
-Route::post('/updatecart', [\App\Http\Controllers\CartController::class, 'updateCart'])->name('updateCart');
-Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'store'])->name('checkout');
+Route::get('/cart', [\App\Http\Controllers\CartController::class, 'show'])->name('cart');
+Route::post('/addtocart', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('addToCart');
+Route::post('/removeonefromcart', [\App\Http\Controllers\CartController::class, 'removeOneFromCart'])->name('removeOneFromCart');
+Route::post('/removeallFromCart', [\App\Http\Controllers\CartController::class, 'removeAllFromCart'])->name('removeAllFromCart');
+
+//checkout functionality
+Route::get('/checkout', [\App\Http\Controllers\OrderController::class, 'store'])->name('checkout');
 Route::get('/payment', [\App\Http\Controllers\CartController::class, 'payment'])->name('payment')->middleware('auth');
-
-//order overview
-
-Route::get('orders', [\App\Http\Controllers\CartController::class, 'orderIndex'])->name('orderIndex');
-Route::get('orders/{cart}', [\App\Http\Controllers\CartController::class, 'show'])->name('showOrder');
-

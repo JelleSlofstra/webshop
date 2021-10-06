@@ -9,17 +9,8 @@ use Illuminate\Support\Facades\Session;
 class Cart extends Model
 {
     use HasFactory;
-
-    protected $table = 'carts';
-    protected $fillable = [
-        'user_id'
-    ];
-
-    public function cartContents()
-    {
-        return $this->hasMany(CartContent::class);
-    }
-    public static function totalPrice()
+    
+    public static function totalCartPrice()
     {
         $bill = 0;
         $variants = session::get('cart');
@@ -30,16 +21,6 @@ class Cart extends Model
         return number_format($bill,2);
     }
 
-    public static function totalOrderPrice(Cart $cart)
-    {
-        $bill = 0;
-        foreach ($cart->cartContents as $cartContent)
-        {
-            $bill += $cartContent->amount * $cartContent->price * $cartContent->vat; 
-        }
-        return number_format($bill,2);
-    }
-
     public static function buildHtml()
     {
         if (session::exists('cart')) {
@@ -47,7 +28,7 @@ class Cart extends Model
             $variants = session::get('cart');
             $html = '<h1>Winkelwagen</h1>';
             $html .= '<button id="empty-cart" class="btn btn-primary update-cart">Winkelwagen leegmaken</button>';
-            $html .= ' <a href="' . route("checkout") . '"><button class="btn btn-primary">Afrekenen</button></a>';
+            $html .= ' <a href="' . route("payment") . '"><button class="btn btn-primary">Afrekenen</button></a>';
             $html .= '<div class="row text-center">';
             foreach ($variants as $variantId => $quantity) {
                 $variant = ProductVariant::find($variantId);
@@ -71,8 +52,8 @@ class Cart extends Model
                 $html .= '<div><strong>Totaalprijs voor ' . $quantity . ' stuk(s):</strong> &euro; ' . $variant->product->VatIncPrice($quantity) .'</div></div>';
                 $html .= '</div></div>';
             } 
-            $html .= '</div> Totaalprijs: &euro; ' . self::totalPrice();
-            $html .= ' <a href="' . route("checkout") . '"><button class="btn btn-primary">Afrekenen</button></a>';
+            $html .= '</div> Totaalprijs: &euro; ' . self::totalCartPrice();
+            $html .= ' <a href="' . route("payment") . '"><button class="btn btn-primary">Afrekenen</button></a>';
         } else {
             //html for an empty cart
             $html = '<h1>Winkelwagen</h1>';
