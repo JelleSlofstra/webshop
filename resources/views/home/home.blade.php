@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
-                @if (\Session::has('success'))
-                <div class="alert alert-success" id="loginflash">
-                
-                {!! \Session::get('success') !!}
-                
-                </div>
-                @endif
-                <script>
-                    $('#loginflash').fadeIn('fast').delay(5000).fadeOut('fast');
-                </script>
+    @if (\Session::has('success'))
+        <div class="alert alert-success" id="loginflash">
+        
+        {!! \Session::get('success') !!}
+        
+        </div>
+    @endif
+    <script>
+        $('#loginflash').fadeIn('fast').delay(5000).fadeOut('fast');
+    </script>
+
     <div class="row justify-content-center">
        
         <div class="col-lg-9">

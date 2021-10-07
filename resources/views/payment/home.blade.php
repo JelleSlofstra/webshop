@@ -2,18 +2,49 @@
 
 @section('content')
 
-<div class='container'>
-    <div><h1>Klaar om te betalen?</h1> </div>
-    <div>totaal: &euro; {{$totalprice}}</div>
+<div class='container text-center payment-container'>
+    <div>
+        <h1>Klaar om te betalen?</h1>
+    </div>
 
-<div>
-<img src="{{ asset('images/payment.jpeg') }}">
-</div>
+    <div>
+        <img src="{{ asset('images/payment.jpeg') }}" class='payment-image'>
+    </div>
 
-<div>
-<button onclick="location.href='checkout'" class="order_button">Bestel!</button>
+    <div> 
+        totaal: &euro; {{ $totalprice }}   
+    </div>
+
+    <div>
+        <form method="post" action="{{ route('checkout') }}" id="checkout">
+            @csrf
+            <button class="btn btn-primary" type="submit">Bestel!</button>
+        </form>
+
+        <div id="error-message" class="bg-primary text-white rounded mx-auto"></div>
     </div>
 </div>
 
-
 @endsection
+
+@push('scripts')
+<script>
+    $(document).on('submit', '#checkout', function(event) {
+        event.preventDefault()
+
+        axios({
+            url: '{{ route("checkout") }}',
+            method: 'post',
+            
+        }).then(function(response) {
+            if (response.data.success) {
+                window.location.href = response.data.redirect
+            } else {
+                $('#error-message').html(response.data.message)
+            }
+        }).catch(function(error) {
+
+        })
+    })
+</script>
+@endpush

@@ -3,7 +3,9 @@
         <a class="navbar-logo" href="{{ url('/') }}">
             <img src="../images/logo.png" class="logo">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -11,29 +13,33 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 @isset($categories)
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/" id="categoryDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Categorieen
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="categoryDropdown">
-                        @foreach ($categories as $navcat)
-                            <a class="dropdown-item" href="{{ route('categories.show', $navcat) }}">{{$navcat->name}}</a>
-                        @endforeach
-                    </div>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/" id="categoryDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categorieen
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                            @foreach($categories as $navcat)
+                                <a class="dropdown-item"
+                                    href="{{ route('categories.show', $navcat) }}">{{ $navcat->name }}</a>
+                            @endforeach
+                        </div>
+                    </li>
                 @endisset
 
                 @isset($manufacturers)
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/" id="manufacturerDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Merken
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="manufacturerDropdown">
-                        @foreach ($manufacturers as $navmanu)
-                            <a class="dropdown-item" href="{{ route('manufacturers.show', $navmanu) }}">{{$navmanu->name}}</a>
-                        @endforeach
-                    </div>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/" id="manufacturerDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Merken
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="manufacturerDropdown">
+                            @foreach($manufacturers as $navmanu)
+                                <a class="dropdown-item"
+                                    href="{{ route('manufacturers.show', $navmanu) }}">{{ $navmanu->name }}</a>
+                            @endforeach
+                        </div>
+                    </li>
                 @endisset
             </ul>
 
@@ -41,43 +47,47 @@
             <ul class="navbar-nav ml-auto">
                 <li class="relative flex lg:inline-flex items-center rounded-xl mt-1">
                     <form method="GET" action='/#'>
-                        <input type="text" name="search" placeholder="Zoek Iets" class="placeholder-black font-semibold text-sm">
+                        <input type="text" name="search" placeholder="Zoek Iets"
+                            class="placeholder-black font-semibold text-sm">
                     </form>
                 </li>
-                <!-- Authentication Links -->                
+                <!-- Authentication Links -->
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         <i class="fas fa-user"></i>
                         <text class="d-md-none">Gebruiker</text>
-                    </a> 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">            
-                        @guest                    
-                        @if (Route::has('login'))
-                            <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        @endif
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        @guest
+                            @if(Route::has('login'))
+                                <a class="dropdown-item"
+                                    href="{{ route('login') }}">{{ __('Login') }}</a>
+                            @endif
 
-                        @if (Route::has('register'))
-                            <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        @endif  
-                        @else  
-                        <a class="dropdown-item" href="{{ route('orderIndex') }}">
-                            Order-overzicht
-                        </a>                   
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
+                            @if(Route::has('register'))
+                                <a class="dropdown-item"
+                                    href="{{ route('register') }}">{{ __('Register') }}</a>
+                            @endif
+                        @else
+                            <a class="dropdown-item" href="{{ route('orders.index') }}">
+                                Order-overzicht
+                            </a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>                        
+                                {{ __('Logout') }}
+                            </a>
                     </div>
-                </li>                    
+                </li>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
-                </form> 
-                @endguest               
+                </form>
+                @endguest
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cart') }}" id="cart" role="button" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link" href="{{ route('cart') }}" id="cart" role="button"
+                        aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-shopping-cart"></i>
                         <text class="d-md-none">Winkelwagen</text>
                     </a>

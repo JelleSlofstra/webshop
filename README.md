@@ -14,4 +14,5 @@ How to use:
 -npm install
 -composer install
 -npm run dev
+-php artisan migrate:fresh --seed
 -php artisan serve

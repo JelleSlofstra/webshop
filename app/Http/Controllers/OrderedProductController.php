@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CartContent;
+use App\Models\OrderedProduct;
 use Illuminate\Http\Request;
 
-class CartContentController extends Controller
+class OrderedProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CartContentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CartContent  $cartContent
+     * @param  \App\Models\OrderedProduct  $orderedProduct
      * @return \Illuminate\Http\Response
      */
-    public function show(CartContent $cartContent)
+    public function show(OrderedProduct $orderedProduct)
     {
         //
     }
@@ -52,10 +52,10 @@ class CartContentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\CartContent  $cartContent
+     * @param  \App\Models\OrderedProduct  $orderedProduct
      * @return \Illuminate\Http\Response
      */
-    public function edit(CartContent $cartContent)
+    public function edit(OrderedProduct $orderedProduct)
     {
         //
     }
@@ -63,11 +63,11 @@ class CartContentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request     
-     * * @param  \App\Models\CartContent  $cartContent
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\OrderedProduct  $orderedProduct
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CartContent $cartContent)
+    public function update(Request $request, OrderedProduct $orderedProduct)
     {
         //
     }
@@ -75,10 +75,10 @@ class CartContentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CartContent  $cartContent
+     * @param  \App\Models\OrderedProduct  $orderedProduct
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CartContent $cartContent)
+    public function destroy(OrderedProduct $orderedProduct)
     {
         //
     }

@@ -11,7 +11,10 @@ class Product extends Model
 
     protected $table = 'products';
 
-    protected $with = ['manufacturer', 'category', 'productImages'];
+    protected $with = [ 'manufacturer', 
+                        'category', 
+                        'productImages'
+    ];
 
     public function manufacturer()
     {

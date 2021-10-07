@@ -7,7 +7,6 @@ use App\Models\CartContent;
 use App\Models\ProductVariant;
 use App\Models\Category;
 use App\Models\Manufacturer;
-use Error;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -22,39 +21,125 @@ class CartController extends Controller
      */
     public function index()
     {
-        if(!session::exists('cart')) {
-            return view('cart', [
-                'categories'    => Category::all(),
-                'manufacturers' => Manufacturer::all(),
-                'emptycart'     => true
-            ]);
-        }
-        else {
-            $productVariants = ProductVariant::all()
-                                        ->whereIn('id', array_keys(session::get('cart')));
-
-            return view('cart', [
-                'categories'    => Category::all(),
-                'manufacturers' => Manufacturer::all(),
-                'variants'      => $productVariants,
-                'cart'          => session::get('cart'),
-                'totalprice'    => Cart::totalPrice()
-            ]);
-        }        
+        //       
     }
+
     public function payment()
     {
         return view('payment/home', [
-            'totalprice' => cart::totalPrice()
+            'totalprice' => cart::totalCartPrice()
         ]);
     }
 
-    public function orderIndex()
+    public function addToCart(Request $request)
     {
-        return view('orders.index', [
-            'categories'    => Category::all(),
-            'manufacturers' => Manufacturer::all()
-        ]);
+        try {
+            //get the productvariant
+            if(!$request->productVariantId) {
+                //if the session doesnt contain a productVariantId
+                //then use the product_id, product_size_id, product_gender_id, product_colour_id
+                $productVariant = ProductVariant::findVariant($request);
+            } else {
+                //if the session does contain a productVariantId
+                $productVariant = ProductVariant::find($request->productVariantId);                     
+            }
+
+            //get the cart contents from the session, or 'start' a new empty cart 
+            if (session::exists('cart')) {
+                $cart = session::get('cart');
+            } else {
+                $cart = [];
+            }
+
+            //update the $cart-array
+            if(array_key_exists($productVariant->id, $cart)){
+                $cart[$productVariant->id] += 1;
+            } else {
+                $cart[$productVariant->id] = 1;
+            }
+
+            //update the 'cart' in the session from $session-array
+            session::put('cart', $cart);
+
+            return response()->json([
+                'success'   => true,
+                'html'      => Cart::buildHtml()
+            ]);
+        }
+        catch(Exception $e) {
+            return response()->json([
+                'success'   => false,
+                'message'   => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function removeOneFromCart(Request $request)
+    {
+        try {
+            //get the productvariant
+            $productVariant = ProductVariant::find($request->productVariantId);                     
+            
+            //get the cart contents from the session
+            $cart = session::get('cart');            
+
+            //update the $cart-array
+            if ($cart[$productVariant->id] === 1) {
+                unset($cart[$productVariant->id]);
+            } else {
+                $cart[$productVariant->id] -= 1;
+            }
+
+            //update the 'cart' in the session from $session-array
+            if (empty($cart)) {
+                session::remove('cart');
+            } else {
+                session::put('cart', $cart);
+            } 
+
+            return response()->json([
+                'success'   => true,
+                'html'      => Cart::buildHtml()
+            ]);
+        }
+        catch(Exception $e) {
+            return response()->json([
+                'success'   => false,
+                'message'   => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function removeAllFromCart(Request $request)
+    {
+        try {
+            //get the productvariant
+            $productVariant = ProductVariant::find($request->productVariantId);                
+            
+            //get the cart contents from the session
+            $cart = session::get('cart');            
+
+            //update the $cart-array
+            unset($cart[$productVariant->id]);            
+
+            //update the 'cart' in the session from $session-array
+            if (empty($cart)) {
+                session::remove('cart');
+            } else {
+                session::put('cart', $cart);
+            } 
+
+            return response()->json([
+                'success'   => true,
+                'html'      => Cart::buildHtml()
+            ]);
+        }
+        catch(Exception $e) {
+            return response()->json([
+                'success'   => false,
+                'message'   => $e->getMessage(),
+            ]);
+        }
     }
 
     public function updateCart(Request $request)
@@ -71,8 +156,7 @@ class CartController extends Controller
                     $productVariant = ProductVariant::findVariant($request);
                 } else {
                     //if the session does contain a productVariantId
-                    $productVariant = ProductVariant::find($request->productVariantId); 
-                    
+                    $productVariant = ProductVariant::find($request->productVariantId);                     
                 }
 
                 //get the cart contents from the session, or 'start' a new empty cart 
@@ -143,35 +227,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {   
-        $cart_contents = session::get('cart');
-
-        $cart = cart::create(['user_id'=> 1]);
-
-        
-        
-        foreach ($cart_contents as $variant_id=>$amount)
-        {
-            $variant = ProductVariant::findOrFail($variant_id);
-            
-            CartContent::create([
-                'cart_id' => $cart->id,    
-                'product_variant_id' => $variant_id,
-                'amount' => $amount,
-                'price' => $variant->product->price,
-                'vat'   => $variant->product->vat,
-                
-            ]);
-        }
-       
-          
-        
-        return view('checkout.home', [
-            'categories'    => Category::all(),
-            'manufacturers' => Manufacturer::all(),        
-            'cart' => $cart,
-            'totalprice'    => Cart::totalOrderPrice($cart)            
-
-        ]);
+        //
     }
 
     /**
@@ -182,21 +238,25 @@ class CartController extends Controller
      */
     public function show(Cart $cart)
     {
-        if (Auth::user()->id === $cart->user_id)
-        {
-            return view('checkout.home', [
+        if(!session::exists('cart')) {
+            return view('cart', [
                 'categories'    => Category::all(),
-                'manufacturers' => Manufacturer::all(),        
-                'cart' => $cart,            
-            ]);
-        } else 
-        {
-            return view('orders.index', [
-                'categories'    => Category::all(),
-                'manufacturers' => Manufacturer::all()
+                'manufacturers' => Manufacturer::all(),
+                'emptycart'     => true
             ]);
         }
-        
+        else {
+            $productVariants = ProductVariant::all()
+                                        ->whereIn('id', array_keys(session::get('cart')));
+
+            return view('cart', [
+                'categories'    => Category::all(),
+                'manufacturers' => Manufacturer::all(),
+                'variants'      => $productVariants,
+                'cart'          => session::get('cart'),
+                'totalprice'    => Cart::totalCartPrice()
+            ]);
+        }         
     }
 
     /**
