@@ -25,8 +25,8 @@
     <div id="page-container">
         <div id="content-wrap">
             @include('partials.navbar')
-             <main class="py-4">
-            @yield('content')
+            <main class="py-4">
+                @yield('content')
             </main>
             @include('partials.footer')
         </div>

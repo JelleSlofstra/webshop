@@ -105,7 +105,8 @@ class OrderController extends Controller
         {
             return view('orders.index', [
                 'categories'    => Category::all(),
-                'manufacturers' => Manufacturer::all()
+                'manufacturers' => Manufacturer::all(),
+                'message'       => 'Je kunt alleen je eigen orders bekijken!'
             ]);
         }
     }

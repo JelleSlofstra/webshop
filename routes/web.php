@@ -23,7 +23,7 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'show'])->name('ro
 Route::resource('categories', \App\Http\Controllers\CategoryController::class, ['parameters' => ['categories' => 'category:name']]);
 Route::resource('products', \App\Http\Controllers\ProductController::class, ['parameters' => ['products' => 'product:slug']]);
 Route::resource('manufacturers', \App\Http\Controllers\ManufacturerController::class, ['parameters' => ['manufacturers' => 'manufacturer:name']]);
-Route::resource('orders', \App\Http\Controllers\OrderController::class);
+Route::resource('orders', \App\Http\Controllers\OrderController::class)->middleware('auth');
 
 //cart functionality
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'show'])->name('cart');
