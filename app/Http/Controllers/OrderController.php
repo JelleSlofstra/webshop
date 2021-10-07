@@ -47,29 +47,43 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $order = Order::create(['user_id'=> Auth::user()->id]);        
-        
-        foreach (session::get('cart') as $variant_id=>$amount)
-        {
-            $variant = ProductVariant::findOrFail($variant_id);
+        try {
+            $cart = session::get('cart');
+
+            if (is_null($cart)) { 
+                return response()->json([
+                    'success'  => false,
+                    'message'  => 'Je mandje is leeg'
+                ]);
+            }
+
+            $order = Order::create(['user_id'=> Auth::user()->id]);        
             
-            OrderedProduct::create([
-                'order_id' => $order->id,    
-                'product_variant_id' => $variant_id,
-                'amount' => $amount,
-                'price' => $variant->product->price,
-                'vat'   => $variant->product->vat,
+            foreach (session::get('cart') as $variant_id=>$amount)
+            {
+                $variant = ProductVariant::findOrFail($variant_id);
+                
+                OrderedProduct::create([
+                    'order_id' => $order->id,    
+                    'product_variant_id' => $variant_id,
+                    'amount' => $amount,
+                    'price' => $variant->product->price,
+                    'vat'   => $variant->product->vat,
+                ]);
+            }
+        
+            session::remove('cart');  
+            
+            return response()->json([
+                'success'  => true,
+                'redirect' => route('orders.show', $order),
+            ]);
+        } catch(Exception $e) {
+            return response()->json([
+                'success'  => false,
+                'message'  => $e->getMessage(),
             ]);
         }
-       
-        session::remove('cart');  
-        
-        return view('checkout.home', [
-            'categories'    => Category::all(),
-            'manufacturers' => Manufacturer::all(),        
-            'order'         => $order,
-            'totalprice'    => Order::totalOrderPrice($order)            
-        ]);
     }
 
     /**

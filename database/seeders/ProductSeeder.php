@@ -180,7 +180,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Skunst 21',
             'slug' => 'skunst',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'We hebben deze racefiets ontwikkeld en getest voor regelmatige ritten. De fiets voelt zo comfortabel dat je steeds vaker en verder wilt rijden.',
             'price' => 1900,
             'vat' => 1.21,
             'category_id' => 3,
@@ -190,7 +190,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Noach -2000',
             'slug' => 'noach',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Wanneer je zoekt naar een instapmodel met veel waar voor je geld, dan is dit de racefiets voor jou!',
             'price' => 1619,
             'vat' => 1.21,
             'category_id' => 3,
@@ -201,7 +201,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Roma 763',
             'slug' => 'roma',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'De Roma 763 is dé elektrische stadsfiets voor iedereen! De AMIGO E-Active is een stevige, betrouwbare en vooral ook betaalbare elektrische fiets.',
             'price' => 3000,
             'vat' => 1.21,
             'category_id' => 4,
@@ -211,7 +211,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Lissabon 4',
             'slug' => 'lissabon',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'De Lissabon is ontdaan van alles wat niet noodzakelijk is. Een vrij minimalistisch fiets dus waarvan je vrijwel alle onderdelen op elke hoek van de straat kunt kopen.',
             'price' => 4000,
             'vat' => 1.21,
             'category_id' => 4,
@@ -221,7 +221,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Praha 1',
             'slug' => 'praha',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Praha 1 biedt een zeer ruime keuze in versnellingen, is nauwkeurig en betrouwbaar en heerlijk om te hebben als je net even wat meer kilometers maakt',
             'price' => 3800,
             'vat' => 1.21,
             'category_id' => 4,
@@ -231,7 +231,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Bucharest 20',
             'slug' => 'bucharest20',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Op de Bucharest 20 rijd jij zonder zorgen rond! De Bucharest 20 is een stevige, betrouwbare en vooral ook betaalbare elektrische fiets.',
             'price' => 2500,
             'vat' => 1.21,
             'category_id' => 4,
@@ -241,7 +241,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Bucharest 19',
             'slug' => 'bucharest19',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'Snelle e-bike met lichtgewicht aluminium frame met zeer krachtige Specialized 1.2 S motor (90Nm) en 600Wh accu. Voorzien van hydraulische schijfremmen voor krachtig remmen en Shimano XT/SLX voor soepel en snel schakelen.',
             'price' => 2200,
             'vat' => 1.21,
             'category_id' => 4,
@@ -251,7 +251,7 @@ class ProductSeeder extends Seeder
         Product::create([
             'name' => 'Bratislava',
             'slug' => 'bratislava',
-            'description' => 'Deze allrounder in comfortabel fietsen is al decennia onze trots. De perfecte fiets voor zowel je dagelijkse rit als een mooie tocht door heuvelachtig terrein.',
+            'description' => 'De Bratislava elektrische herenfiets is een e-bike met uitmuntende prijs- / kwaliteit verhouding. De fiets is voorzien van een 13Ah accu waarmee u fietstochten tot wel 120km maakt.',
             'price' => 2100,
             'vat' => 1.21,
             'category_id' => 4,

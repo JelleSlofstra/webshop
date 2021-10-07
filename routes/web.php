@@ -32,5 +32,5 @@ Route::post('/removeonefromcart', [\App\Http\Controllers\CartController::class, 
 Route::post('/removeallFromCart', [\App\Http\Controllers\CartController::class, 'removeAllFromCart'])->name('removeAllFromCart');
 
 //checkout functionality
-Route::get('/checkout', [\App\Http\Controllers\OrderController::class, 'store'])->name('checkout')->middleware('auth');
+Route::post('/checkout', [\App\Http\Controllers\OrderController::class, 'store'])->name('checkout');
 Route::get('/payment', [\App\Http\Controllers\CartController::class, 'payment'])->name('payment')->middleware('auth');
