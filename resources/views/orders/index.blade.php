@@ -3,6 +3,9 @@
 @section('content')
 <div class="container text-center">
     <h1>Orderoverzicht voor {{ Auth::user()->username }}</h1>
+    @isset($message)
+        <div class="bg-primary text-white rounded">{{ $message }}</div>
+    @endisset
 
     @foreach(Auth::user()->orders as $order)
         <a href="{{ route('orders.show', $order) }}">
