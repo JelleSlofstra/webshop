@@ -14,10 +14,14 @@ class Cart extends Model
     {
         $bill = 0;
         $variants = session::get('cart');
-        foreach ($variants as $variantId => $quantity) {            
-            $product = ProductVariant::find($variantId)->product;
-            $bill += $quantity * $product->price * $product->vat;            
-        } 
+
+        if (!is_null($variants)) {
+            foreach ($variants as $variantId => $quantity) {            
+                $product = ProductVariant::find($variantId)->product;
+                $bill += $quantity * $product->price * $product->vat;            
+            } 
+        }
+        
         return number_format($bill,2);
     }
 
