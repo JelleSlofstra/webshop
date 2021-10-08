@@ -21,10 +21,12 @@ class Order extends Model
     public static function totalOrderPrice(Order $order)
     {
         $bill = 0;
+
         foreach ($order->orderedProducts as $products)
         {
             $bill += $products->amount * $products->price * $products->vat; 
         }
+        
         return number_format($bill,2);
     }
 }

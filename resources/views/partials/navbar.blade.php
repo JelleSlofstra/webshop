@@ -56,7 +56,7 @@
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         <i class="fas fa-user"></i>
-                        <text class="d-md-none">Gebruiker</text>
+                        <div class="d-md-none">Gebruiker</div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         @guest
@@ -89,7 +89,7 @@
                     <a class="nav-link" href="{{ route('cart') }}" id="cart" role="button"
                         aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-shopping-cart"></i>
-                        <text class="d-md-none">Winkelwagen</text>
+                        <div class="d-md-none">Winkelwagen</div>
                     </a>
                 </li>
             </ul>
