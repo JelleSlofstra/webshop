@@ -21,7 +21,7 @@
             <button class="btn btn-primary" type="submit">Bestel!</button>
         </form>
 
-        <div id="error-message" class="bg-primary text-white rounded mx-auto"></div>
+        <div id="error-message" class="bg-primary text-white rounded mx-auto mt-3"></div>
     </div>
 </div>
 

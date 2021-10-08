@@ -19,7 +19,7 @@
                     <div class="carousel-inner">
                         @foreach($product->productImages as $image)
                             <div class="carousel-item @if ($loop->first)active @endif">
-                                <img src="../images/{{ $image->image }}" id="carousel-image" alt="...">
+                                <img src="{{ asset('/images/' . $image->image) }}" id="carousel-image" alt="...">
                             </div>
                         @endforeach
                     </div>
@@ -35,10 +35,9 @@
 
                 <div class="card-body">
                     <h3 class="card-title">{{ $product->name }}</h3>
-                    <h5 class="card-subtitle">Merk: <a
-                            href="{{ route('manufacturers.show', $product->manufacturer) }}">{{ $product->manufacturer->name }}</a>,
-                        categorie: <a
-                            href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a>
+                    <h5 class="card-subtitle">
+                        Merk: <a href="{{ route('manufacturers.show', $product->manufacturer) }}">{{ $product->manufacturer->name }}</a>,
+                        categorie: <a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a>
                     </h5>
                     <p>{{ $product->description }}</p>
                 </div>
@@ -46,10 +45,11 @@
         </div>
 
         <!-- bestelopties -->
-        <div class="col-lg-3 my-2 align-self-center">
+        <div class="col-lg-3 my-auto">
             <div class="container">
                 <h2 class="text-danger font-weight-bold">&euro; {{ $product->price }}</h2>
                 <h2>Bestelopties</h2>
+
                 <div class="row">
                     <!-- Kleuropties -->
                     <div class="col-md-4 col-lg-12 mt-3">
