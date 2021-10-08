@@ -123,5 +123,20 @@
             })
         })
 
+        $(document).on('click', '#empty-cart', function (event) {
+            axios({
+                method: 'POST',
+                url: '{{ route("emptyCart") }}',
+                data: {
+                }
+            }).then(function (response) {
+                if (response.data.success) {
+                    $('.cart-contents').html(response.data.html)
+                }
+            }).catch(function (error) {
+
+            })
+        })
+
     </script>
 @endpush

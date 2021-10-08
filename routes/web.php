@@ -27,6 +27,7 @@ Route::resource('orders', \App\Http\Controllers\OrderController::class)->middlew
 
 //cart functionality
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'show'])->name('cart');
+Route::post('/emptycart', [\App\Http\Controllers\CartController::class, 'emptyCart'])->name('emptyCart');
 Route::post('/addtocart', [\App\Http\Controllers\CartController::class, 'addToCart'])->name('addToCart');
 Route::post('/removeonefromcart', [\App\Http\Controllers\CartController::class, 'removeOneFromCart'])->name('removeOneFromCart');
 Route::post('/removeallFromCart', [\App\Http\Controllers\CartController::class, 'removeAllFromCart'])->name('removeAllFromCart');

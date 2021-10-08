@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Models\CartContent;
 use App\Models\ProductVariant;
 use App\Models\Category;
 use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 use Exception;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -118,6 +116,24 @@ class CartController extends Controller
             } else {
                 session::put('cart', $cart);
             } 
+
+            return response()->json([
+                'success'   => true,
+                'html'      => Cart::buildHtml()
+            ]);
+        }
+        catch(Exception $e) {
+            return response()->json([
+                'success'   => false,
+                'message'   => $e->getMessage(),
+            ]);
+        }
+    }
+
+    public function emptyCart(Request $request)
+    {
+        try {
+            session::remove('cart');
 
             return response()->json([
                 'success'   => true,
