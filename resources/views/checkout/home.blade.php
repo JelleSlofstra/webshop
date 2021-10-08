@@ -13,7 +13,7 @@
                     <div class="cart_container container-fluid">
                         <div class="row">
                             <div class="cart_item_quantity col-6 col-md-3"><img
-                                    src="../images/{{ $product->productvariant->product->ProductImages->first->image->image }}"
+                                    src="{{ asset('/images/' . $product->productvariant->product->ProductImages->first->image->image) }}"
                                     alt="" id="testimage">
                             </div>
                             <div class="cart_item_name cart_info_col col-6 col-md-3">

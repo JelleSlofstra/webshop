@@ -17,7 +17,7 @@
                 <div class="col-12 card my-3 p-4">
                     <div class="row">
                         <div class="col-lg-3 col-md-4 my-auto">
-                            <img src="../images/{{ $variant->product->productImages->first->image->image }}"
+                            <img src="{{ asset('/images/' . $variant->product->productImages->first->image->image) }}"
                                 alt="" class="cart-img d-block mx-auto my-2 rounded">
                             <span class="d-block">
                                 <button id="add-one" pv_id="{{ $variant->id }}"
@@ -25,8 +25,8 @@
                                 <button id="remove-one" pv_id="{{ $variant->id }}"
                                     class="d-inline btn btn-primary update-cart">-</button>
                                 <button id="remove-all" pv_id="{{ $variant->id }}"
-                                    class="d-inline btn btn-primary update-cart"><i
-                                        class="far fa-trash-alt"></i></button>
+                                    class="d-inline btn btn-primary update-cart">
+                                    <i class="far fa-trash-alt"></i></button>
                             </span>
                         </div>
 
