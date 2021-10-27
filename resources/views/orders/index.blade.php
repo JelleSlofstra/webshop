@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container text-center">
-    <h1>Orderoverzicht voor {{ Auth::user()->username }}</h1>
+    <h1>Order-overzicht voor {{ Auth::user()->username }}</h1>
     @isset($message)
         <div class="bg-primary text-white rounded">{{ $message }}</div>
     @endisset
